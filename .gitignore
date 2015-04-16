@@ -1,0 +1,32 @@
+.DS_Store
+.Trashes
+*.swp
+*.lock
+
+# Xcode
+*~.nib
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+
+Pods/resources-to-copy-Sherlock.txt
+
+
+# Intellij project files
+*.iml
+*.ipr
+*.iwd
+.idea/
+Sherlock/StoryFeed/SYNStoryFeedController.m
+
+Sherlock/GitVersion.h
