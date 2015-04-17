@@ -25,11 +25,18 @@
     int output;
     int value[4];
     
+    int lastSpeedValue;
+    int maxSpeed;
+    
     __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UIButton *driveButton;
     __weak IBOutlet UIButton *weaponButton;
     __weak IBOutlet UIButton *magnetButton;
 }
+
+int zeroRange = 5;
+int zeroSteerRange = 25;
+int maxSpeedChange = 20;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -73,6 +80,8 @@
     output = 0;
     
     statusLabel.text = @"Connected";
+    
+    maxSpeed = 100;
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -88,25 +97,39 @@
 -(void) timeMotionTransmit {
     // timed update method that gets device motion and transmits it to the toy
 
+    int speed = 0;
+    int steer = 0;
+    int weapon = 800; // 800 off, 250 on
+    NSString* msg = @"";
+
+    //if (deadmanEnabled && driverAlive) {
+
     CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
     CMAttitude *currentAttitude = currentDeviceMotion.attitude;
     // Convert the radians yaw value to degrees then round up/down
-    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
+//    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
     
     float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
-    //    steer = ((pitch/60.0f) * -100);
-    //    steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
-    //    steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
-    //
-    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
+    steer = ((pitch/60.0f) * -100);
+    steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
+    steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
     
+    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
+    speed = (roll/30.0f) * maxSpeed;
+    speed = speed < zeroRange && speed > 0 ? 0 : speed > -zeroRange && speed < 0 ? 0 : speed;
+    speed = speed > maxSpeed ? maxSpeed : (speed < -maxSpeed ? -maxSpeed : speed);
+    
+    lastSpeedValue = speed;
+    
+    //weapon = weaponValue;
+
     //NSLog(@"steer: %d    speed: %d", steer, speed);
     
     //float speed = (pitch/30.0f) * 180.0f;
-    float speed = 90.0f + (pitch*3.0f);
-    speed = speed > 180.0 ? 180.0 : (speed < 0.0 ? 0.0 : speed);
-    
-    NSLog(@"yaw: %f    roll: %f     pitch: %f    speed: %f", yaw, roll, pitch, speed);
+//    float speed = 90.0f + (pitch*3.0f);
+//    speed = speed > 180.0 ? 180.0 : (speed < 0.0 ? 0.0 : speed);
+//    
+//    NSLog(@"yaw: %f    roll: %f     pitch: %f    speed: %f", yaw, roll, pitch, speed);
     
     //    // control the rage of speed schange
     //    //        if (speed > zeroRange && speed > lastSpeedValue) {
@@ -124,18 +147,29 @@
     //NSLog(@"steer: %d    speed: %d", steer, speed);
     
     
-    if (speed == 180) {
-        speed = 179;
-    } else if (speed < 100 && speed > 80) {
-        // zero out this noise
-        speed = 90;
-    }
-    // 90 is zero speed, < 90 is reverse, > 90 is forward
-    int speed2 = 180 - speed;
-    uint8_t bytesAll[] = { speed, speed2 };
-    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:2];
+//    if (speed == 180) {
+//        speed = 179;
+//    } else if (speed < 100 && speed > 80) {
+//        // zero out this noise
+//        speed = 90;
+//    }
+//    // 90 is zero speed, < 90 is reverse, > 90 is forward
+//    int speed2 = 180 - speed;
+//    uint8_t bytesAll[] = { speed, speed2 };
+//    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:2];
     
-    [self.rfduino send:dataAll];
+//    } else {
+//        lastSpeedValue = 0;
+//    }
+//    msg = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
+
+//    uint8_t bytesAll[] = { steer, speed, weapon };
+//    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
+//    [self.rfduino send:dataAll];
+    
+    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
+    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
+    [self.rfduino send:dataString];
 }
 
 - (IBAction)disconnect:(id)sender

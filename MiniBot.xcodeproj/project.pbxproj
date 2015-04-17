@@ -25,7 +25,9 @@
 		BB6FC4501AD75E5100FB57C1 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4471AD75E5100FB57C1 /* RFduino.m */; };
 		BB6FC4511AD75E5100FB57C1 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44A1AD75E5100FB57C1 /* RfduinoManager.m */; };
 		BB6FC4521AD75E5100FB57C1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */; };
+		BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */ = {isa = PBXBuildFile; fileRef = BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */; };
 		BBD3CDB11ADF4A2300D19C31 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */; };
+		BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +73,9 @@
 		BB6FC44B1AD75E5100FB57C1 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
 		BB6FC44C1AD75E5100FB57C1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFDuinoScript.ino; sourceTree = "<group>"; };
 		BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minibotHUD1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 		BB6FC4101AD7584800FB57C1 /* MiniBot */ = {
 			isa = PBXGroup;
 			children = (
+				BBAC61B21AE1B7110020742F /* RFDuinoScript */,
+				BBD3CDB21ADF53C200D19C31 /* Resources */,
 				BB6FC4411AD75E5100FB57C1 /* rfduino */,
 				BB6FC4151AD7584800FB57C1 /* MinibotAppDelegate.h */,
 				BB6FC4161AD7584800FB57C1 /* MiniBotAppDelegate.m */,
@@ -184,6 +190,22 @@
 			);
 			path = rfduino;
 			sourceTree = "<group>";
+		};
+		BBAC61B21AE1B7110020742F /* RFDuinoScript */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */,
+			);
+			path = RFDuinoScript;
+			sourceTree = SOURCE_ROOT;
+		};
+		BBD3CDB21ADF53C200D19C31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -273,6 +295,8 @@
 			files = (
 				BB6FC41D1AD7584800FB57C1 /* Main.storyboard in Resources */,
 				BB6FC4221AD7584800FB57C1 /* LaunchScreen.xib in Resources */,
+				BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */,
+				BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */,
 				BB6FC41F1AD7584800FB57C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +449,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MiniBot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -436,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MiniBot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

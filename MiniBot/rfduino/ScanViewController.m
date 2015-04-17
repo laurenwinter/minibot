@@ -298,7 +298,8 @@
 
 - (void)didLoadServiceRFduino:(RFduino *)rfduino
 {
-    MinibotDashboardViewController *viewController = [[MinibotDashboardViewController alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    MinibotDashboardViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardViewController"];
     viewController.rfduino = rfduino;
 
     loadService = true;

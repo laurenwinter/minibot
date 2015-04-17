@@ -8,7 +8,7 @@
         <!--Minibot Dashboard View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MinibotDashboardViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dashboardViewController" id="BYZ-38-t0r" customClass="MinibotDashboardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minibotHUD1.png" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-bp-qD4">
                                 <rect key="frame" x="0.0" y="35" width="600" height="31"/>
                                 <constraints>
@@ -69,16 +72,20 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="13W-HO-fJx"/>
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="80" id="D43-N7-43w"/>
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FUh-Po-8pl"/>
+                            <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="GDm-uh-M5L"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="Hck-KT-T7s"/>
+                            <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="IvT-3b-WVt"/>
                             <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="LH6-ad-6Ys"/>
                             <constraint firstAttribute="centerY" secondItem="lkU-K5-Lta" secondAttribute="centerY" constant="-89" id="SnY-L5-1yR"/>
                             <constraint firstAttribute="centerX" secondItem="CCd-bp-qD4" secondAttribute="centerX" id="Z7v-pS-ZVu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CCd-bp-qD4" secondAttribute="trailing" constant="-16" id="iDl-PY-iay"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="lJg-WQ-krQ"/>
+                            <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lrr-Bj-GGm"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="oWo-sM-8FH"/>
                             <constraint firstItem="eiO-De-cON" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uEw-EH-RW7"/>
                         </constraints>
@@ -100,4 +107,7 @@
             <point key="canvasLocation" x="260" y="184"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="minibotHUD1.png" width="960" height="540"/>
+    </resources>
 </document>
