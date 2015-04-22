@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #include <CoreMotion/CoreMotion.h>
+#import "RFduinoManagerDelegate.h"
 #import "RFduino.h"
 
-@interface MinibotDashboardViewController : UIViewController <RFduinoDelegate>
+@class RFduinoManager;
+@class RFduino;
+
+@interface MinibotDashboardViewController : UIViewController <RFduinoManagerDelegate, RFduinoDelegate>
+{
+    RFduinoManager *rfduinoManager;
+}
 
 @property(strong, nonatomic) RFduino *rfduino;
 

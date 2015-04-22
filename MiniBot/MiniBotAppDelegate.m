@@ -7,6 +7,7 @@
 //
 
 #import "MinibotAppDelegate.h"
+#import "MinibotDashboardViewController.h"
 #import "ScanViewController.h"
 #import "RFduinoManager.h"
 
@@ -26,14 +27,19 @@
     
     rfduinoManager = RFduinoManager.sharedRFduinoManager;
     
-    ScanViewController *viewController = [[ScanViewController alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    MinibotDashboardViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardViewController"];
+//    viewController.rfduino = rfduino;
+    
+//    ScanViewController *viewController = [[ScanViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navController.navigationBar.hidden = YES;
     [self.window setRootViewController:navController];
     
-    navController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+//    navController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     
-    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

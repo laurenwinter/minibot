@@ -7,6 +7,8 @@
 //
 
 #import "MinibotDashboardViewController.h"
+#import "RFduinoManager.h"
+#import "RFduino.h"
 
 /** @def CC_DEGREES_TO_RADIANS
  converts degrees to radians
@@ -19,6 +21,7 @@
 #define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
 
 @implementation MinibotDashboardViewController {
+ 
     CMMotionManager *motionManager;
     NSTimer *timedThread;
     
@@ -28,6 +31,7 @@
     int lastSpeedValue;
     int maxSpeed;
     
+    __weak IBOutlet UIButton *bleConnectButton;
     __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UIButton *driveButton;
     __weak IBOutlet UIButton *weaponButton;
@@ -41,6 +45,8 @@ int maxSpeedChange = 20;
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
+        rfduinoManager = [RFduinoManager sharedRFduinoManager];
+
         // initialize the core motion manager for accelerometer and gyro
         motionManager = [[CMMotionManager alloc] init];
         motionManager.deviceMotionUpdateInterval = 1.0/60.0;
@@ -56,6 +62,8 @@ int maxSpeedChange = 20;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    rfduinoManager.delegate = self;
+
     for (int i = 0; i < 4; i++)
         value[i] = 90;
     
@@ -79,7 +87,8 @@ int maxSpeedChange = 20;
     
     output = 0;
     
-    statusLabel.text = @"Connected";
+    bleConnectButton.hidden = YES;
+    statusLabel.text = @"Scanning for Minibot";
     
     maxSpeed = 100;
 }
@@ -169,6 +178,7 @@ int maxSpeedChange = 20;
     
     NSString *controlString = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
+    NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
     [self.rfduino send:dataString];
 }
 
@@ -181,6 +191,10 @@ int maxSpeedChange = 20;
     [self.rfduino disconnect];
 }
 
+
+- (IBAction)bleConnectAction:(id)sender {
+}
+
 - (IBAction)driveButtonAction:(id)sender {
 }
 
@@ -188,6 +202,44 @@ int maxSpeedChange = 20;
 }
 
 - (IBAction)weaponButtonAction:(id)sender {
+}
+
+#pragma mark - RfduinoDiscoveryDelegate methods
+
+- (void)didDiscoverRFduino:(RFduino *)rfduino
+{
+    NSLog(@"didDiscoverRFduino");
+    bleConnectButton.hidden = NO;
+    statusLabel.text = @"Minibot Found";
+}
+
+- (void)didUpdateDiscoveredRFduino:(RFduino *)rfduino
+{
+    NSLog(@"didUpdateRFduino");
+    
+}
+
+- (void)didConnectRFduino:(RFduino *)rfduino
+{
+    NSLog(@"didConnectRFduino");
+    
+    [rfduinoManager stopScan];
+}
+
+- (void)didLoadServiceRFduino:(RFduino *)rfduino
+{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+//    MinibotDashboardViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardViewController"];
+//    viewController.rfduino = rfduino;
+//    
+//    [[self navigationController] pushViewController:viewController animated:YES];
+}
+
+- (void)didDisconnectRFduino:(RFduino *)rfduino
+{
+    NSLog(@"didDisconnectRFduino");
+    
+    [rfduinoManager startScan];
 }
 
 @end

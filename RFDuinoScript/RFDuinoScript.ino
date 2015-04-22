@@ -17,7 +17,9 @@ int servo2Speed;
 bool speedChanged;
 
 void setup() {
-  Serial.begin(9600);
+  //Serial.begin(115200);
+    Serial.begin(9600);
+
   
   servo1Speed = 90;
   servo2Speed = 90;
@@ -59,11 +61,11 @@ void loop() {
     */
 
     // Create the 26 char ARM protocol string and send it
-    // "<DRH ddddsssswwww   0   0>" 
+    // "<DRH ddddsssswwww   0   0>" <DRIV-100-100 800   0   0>
     // dddd = Direction (-100 to 100)
     // ssss = Speed (-100 to 100)
     // wwww = Weapon (250 to 800)
-    Serial.print("<DRH ");
+    Serial.print("<DRIV");
     Serial.print(receiveString);
     Serial.print("   0   0>");
 
@@ -79,7 +81,7 @@ void RFduinoBLE_onReceive(char *data, int len){
     speedChanged = true;
     receiveString = "";
     
-    for (int i = 1; i < len; i++) {
+    for (int i = 0; i < len; i++) {
       receiveString += data[i];
     }
     //Serial.println(receiveString);
@@ -87,6 +89,7 @@ void RFduinoBLE_onReceive(char *data, int len){
     //servo2Speed = data[1];
   } else {
     Serial.println(len);
+    Serial.println(data);
     Serial.println("not 12");  
   }
   

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Minibot Dashboard View Controller-->
@@ -17,9 +17,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="minibotHUD1.png" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gos-AY-U0y">
+                                <rect key="frame" x="219" y="0.0" width="163" height="33"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="163" id="BTK-TO-Njp"/>
+                                    <constraint firstAttribute="height" constant="33" id="HWp-Jx-5NH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                <state key="normal" title="Connect BLE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bleConnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNJ-oA-wKk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-Zt-1wx">
+                                <rect key="frame" x="16" y="187" width="139" height="225"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="1" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="e0s-rc-Mgn"/>
+                                    <constraint firstAttribute="height" constant="225" id="jpm-Ed-Mmh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                <state key="normal" title="Drive Enable">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="driveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3mY-uo-EcV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta">
+                                <rect key="frame" x="445" y="318" width="139" height="94"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="GE8-Ri-VUQ"/>
+                                    <constraint firstAttribute="height" constant="94" id="TIf-32-C2u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                <state key="normal" title="Weapon">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="weaponButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-s2-awZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-De-cON">
+                                <rect key="frame" x="445" y="187" width="139" height="94"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="8nO-td-hdn"/>
+                                    <constraint firstAttribute="width" constant="139" id="mva-VA-1NM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                <state key="normal" title="Magnet">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="magnetButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7bI-Sq-fo1"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-bp-qD4">
                                 <rect key="frame" x="0.0" y="35" width="600" height="31"/>
                                 <constraints>
@@ -29,73 +94,39 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta">
-                                <rect key="frame" x="445" y="336" width="139" height="106"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="0nl-N5-dCF"/>
-                                    <constraint firstAttribute="height" constant="106" id="wet-MZ-aar"/>
-                                </constraints>
-                                <state key="normal" title="Weapon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="weaponButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-s2-awZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-De-cON">
-                                <rect key="frame" x="445" y="167" width="139" height="106"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="lfk-o2-pUD"/>
-                                    <constraint firstAttribute="height" constant="106" id="z7B-iU-gCQ"/>
-                                </constraints>
-                                <state key="normal" title="Magnet">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="magnetButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7bI-Sq-fo1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-Zt-1wx">
-                                <rect key="frame" x="23" y="150" width="139" height="300"/>
-                                <color key="backgroundColor" red="0.81960784310000001" green="1" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="139" id="fKZ-Uu-ciY"/>
-                                    <constraint firstAttribute="height" constant="300" id="sY1-Qe-nnx"/>
-                                </constraints>
-                                <state key="normal" title="Drive Enable">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="driveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3mY-uo-EcV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="13W-HO-fJx"/>
-                            <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="80" id="D43-N7-43w"/>
-                            <constraint firstItem="lkU-K5-Lta" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="FUh-Po-8pl"/>
-                            <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="GDm-uh-M5L"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="Hck-KT-T7s"/>
-                            <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="IvT-3b-WVt"/>
-                            <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="LH6-ad-6Ys"/>
-                            <constraint firstAttribute="centerY" secondItem="lkU-K5-Lta" secondAttribute="centerY" constant="-89" id="SnY-L5-1yR"/>
-                            <constraint firstAttribute="centerX" secondItem="CCd-bp-qD4" secondAttribute="centerX" id="Z7v-pS-ZVu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CCd-bp-qD4" secondAttribute="trailing" constant="-16" id="iDl-PY-iay"/>
-                            <constraint firstItem="CCd-bp-qD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="lJg-WQ-krQ"/>
-                            <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lrr-Bj-GGm"/>
-                            <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="oWo-sM-8FH"/>
-                            <constraint firstItem="eiO-De-cON" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uEw-EH-RW7"/>
+                            <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="83" id="2ox-oW-kvu"/>
+                            <constraint firstAttribute="centerY" secondItem="lkU-K5-Lta" secondAttribute="centerY" constant="-89" id="3yA-h6-nVu"/>
+                            <constraint firstAttribute="trailing" secondItem="CCd-bp-qD4" secondAttribute="trailing" id="4lJ-P3-AQr"/>
+                            <constraint firstAttribute="centerX" secondItem="gos-AY-U0y" secondAttribute="centerX" id="6jQ-bS-EtQ"/>
+                            <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="8yo-Jg-Mjb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
+                            <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="Kum-sA-7yU"/>
+                            <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
+                            <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="66" id="Mxb-GC-zOC"/>
+                            <constraint firstAttribute="centerY" secondItem="lkU-K5-Lta" secondAttribute="centerY" constant="-65" id="N2I-F5-zQA"/>
+                            <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" constant="0.5" id="QWW-5p-vAA"/>
+                            <constraint firstItem="gos-AY-U0y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RnL-Rd-Uhs"/>
+                            <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="dnh-fu-0iG"/>
+                            <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nmP-ux-BMd"/>
+                            <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
+                            <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="thL-Cq-WHi"/>
+                            <constraint firstItem="gos-AY-U0y" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="top" constant="-35" id="xSl-na-rUy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Z7v-pS-ZVu"/>
+                                <exclude reference="2ox-oW-kvu"/>
+                                <exclude reference="3yA-h6-nVu"/>
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
                         <outlet property="magnetButton" destination="eiO-De-cON" id="Tgv-9b-lPA"/>
                         <outlet property="statusLabel" destination="CCd-bp-qD4" id="95X-uD-jgl"/>
@@ -104,10 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260" y="184"/>
+            <point key="canvasLocation" x="167" y="94"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="minibotHUD1.png" width="960" height="540"/>
-    </resources>
 </document>
