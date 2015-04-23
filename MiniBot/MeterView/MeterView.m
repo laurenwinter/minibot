@@ -62,11 +62,6 @@
 	CGContextRestoreGState(ctx);
 }
 
-- (void)dealloc {
-	[tintColor_ release];
-	
-	[super dealloc];
-}
 @end
 
 @implementation MeterView
@@ -163,7 +158,6 @@
 							
 			float textWidth = textHeight * [string length] / 2;
 			CGContextShowTextAtPoint(ctx, centerX + cos(angle) * (radius - textInset) - textWidth / 2.0, centerY + sin(angle) * (radius - textInset) + textHeight / 4.0, [string UTF8String], [string length]);
-			[string release];
 		} else {
 			myTickLength = self.minorTickLength;
 		}
@@ -209,7 +203,7 @@
 	self.needle.width = 2.0;
 	self.needle.length = 0.8;
 		
-	needleLayer = [[CALayer layer] retain];
+	needleLayer = [CALayer layer];
 	needleLayer.bounds = self.bounds;
 	needleLayer.position = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
 	needleLayer.needsDisplayOnBoundsChange = YES;
@@ -229,15 +223,6 @@
 	CGFloat angle = self.startAngle + arcLength * val / (self.maxNumber - self.minNumber) - arcLength * (self.minNumber / (self.maxNumber - self.minNumber));
 		
 	needleLayer.transform = CATransform3DMakeRotation(angle, 0, 0, 1);
-}
-
-- (void)dealloc {
-	[needle_ release];
-	[textLabel_ release];
-	
-	[needleLayer release];
-	
-    [super dealloc];
 }
 
 @end

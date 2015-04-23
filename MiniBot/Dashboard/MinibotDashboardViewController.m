@@ -10,6 +10,8 @@
 #import "RFduinoManager.h"
 #import "RFduino.h"
 
+#import "MeterView.h"
+
 /** @def CC_DEGREES_TO_RADIANS
  converts degrees to radians
  */
@@ -38,6 +40,9 @@
     __weak IBOutlet UIButton *driveButton;
     __weak IBOutlet UIButton *weaponButton;
     __weak IBOutlet UIButton *magnetButton;
+    
+    __weak IBOutlet MeterView *speedometerView;
+
 }
 
 int zeroRange = 5;
@@ -71,22 +76,6 @@ int maxSpeedChange = 20;
     
     [self.rfduino setDelegate:self];
     
-//    UIColor *start = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.15];
-//    UIColor *stop = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.45];
-//    
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    //gradient.frame = [self.view bounds];
-//    gradient.frame = CGRectMake(0, 0, 1024, 1024);
-//    gradient.colors = [NSArray arrayWithObjects:(id)start.CGColor, (id)stop.CGColor, nil];
-//    [self.view.layer insertSublayer:gradient atIndex:0];
-//    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(dismissKeyboard)];
-//    
-//    [tap setCancelsTouchesInView:NO];
-//    [self.view addGestureRecognizer:tap];
-    
     output = 0;
     
     bleConnectButton.hidden = YES;
@@ -95,6 +84,16 @@ int maxSpeedChange = 20;
     maxSpeed = 100;
     
     driveActive = NO;
+    
+    // Meter View
+    speedometerView.textLabel.text = @"km/h";
+    speedometerView.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-BoldItalic" size:18.0];
+    speedometerView.lineWidth = 2.5;
+    speedometerView.minorTickLength = 15.0;
+    speedometerView.needle.width = 3.0;
+    speedometerView.textLabel.textColor = [UIColor colorWithRed:0.7 green:1.0 blue:1.0 alpha:1.0];
+    
+    speedometerView.value = 0.0;
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -185,6 +184,8 @@ int maxSpeedChange = 20;
 //    uint8_t bytesAll[] = { steer, speed, weapon };
 //    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
 //    [self.rfduino send:dataAll];
+    
+    speedometerView.value = speed;
     
     NSString *controlString = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];

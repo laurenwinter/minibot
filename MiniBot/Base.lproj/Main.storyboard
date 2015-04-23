@@ -96,6 +96,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-XE-81q" userLabel="Meter View" customClass="MeterView">
+                                <rect key="frame" x="181" y="196" width="238" height="208"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="8wA-vg-HQ7"/>
+                                    <constraint firstAttribute="width" constant="238" id="ggQ-06-LbX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,12 +115,14 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
                             <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="Kum-sA-7yU"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
+                            <constraint firstAttribute="centerX" secondItem="SjC-XE-81q" secondAttribute="centerX" id="M2q-7g-m3P"/>
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="66" id="Mxb-GC-zOC"/>
                             <constraint firstAttribute="centerY" secondItem="lkU-K5-Lta" secondAttribute="centerY" constant="-65" id="N2I-F5-zQA"/>
                             <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" constant="0.5" id="QWW-5p-vAA"/>
                             <constraint firstItem="gos-AY-U0y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="15" id="RnL-Rd-Uhs"/>
                             <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="dnh-fu-0iG"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nmP-ux-BMd"/>
+                            <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
                             <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="thL-Cq-WHi"/>
                             <constraint firstItem="gos-AY-U0y" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="top" constant="-35" id="xSl-na-rUy"/>
@@ -131,6 +141,7 @@
                         <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
                         <outlet property="magnetButton" destination="eiO-De-cON" id="Tgv-9b-lPA"/>
+                        <outlet property="speedometerView" destination="SjC-XE-81q" id="aK8-pb-6nT"/>
                         <outlet property="statusLabel" destination="CCd-bp-qD4" id="95X-uD-jgl"/>
                         <outlet property="weaponButton" destination="lkU-K5-Lta" id="ngU-WC-zTC"/>
                     </connections>
