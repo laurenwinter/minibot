@@ -28,6 +28,7 @@
 		BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */ = {isa = PBXBuildFile; fileRef = BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */; };
 		BBD3CDB11ADF4A2300D19C31 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */; };
 		BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */; };
+		BBE5AA561AE89A110037CBC0 /* MeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE5AA551AE89A110037CBC0 /* MeterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFDuinoScript.ino; sourceTree = "<group>"; };
 		BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minibotHUD1.png; sourceTree = "<group>"; };
+		BBE5AA541AE89A110037CBC0 /* MeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterView.h; sourceTree = "<group>"; };
+		BBE5AA551AE89A110037CBC0 /* MeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,7 @@
 		BB6FC4101AD7584800FB57C1 /* MiniBot */ = {
 			isa = PBXGroup;
 			children = (
+				BBE5AA531AE89A110037CBC0 /* MeterView */,
 				BBAC61B21AE1B7110020742F /* RFDuinoScript */,
 				BBD3CDB21ADF53C200D19C31 /* Resources */,
 				BB6FC4411AD75E5100FB57C1 /* rfduino */,
@@ -206,6 +210,15 @@
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
+		};
+		BBE5AA531AE89A110037CBC0 /* MeterView */ = {
+			isa = PBXGroup;
+			children = (
+				BBE5AA541AE89A110037CBC0 /* MeterView.h */,
+				BBE5AA551AE89A110037CBC0 /* MeterView.m */,
+			);
+			path = MeterView;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -319,6 +332,7 @@
 				BB6FC4511AD75E5100FB57C1 /* RfduinoManager.m in Sources */,
 				BB3EAB4F1ADD8B960073E134 /* MinibotDashboardViewController.m in Sources */,
 				BB6FC41A1AD7584800FB57C1 /* ViewController.m in Sources */,
+				BBE5AA561AE89A110037CBC0 /* MeterView.m in Sources */,
 				BB6FC4521AD75E5100FB57C1 /* ScanViewController.m in Sources */,
 				BB6FC4171AD7584800FB57C1 /* MiniBotAppDelegate.m in Sources */,
 				BB6FC4501AD75E5100FB57C1 /* RFduino.m in Sources */,

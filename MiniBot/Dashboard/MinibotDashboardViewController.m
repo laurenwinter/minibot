@@ -31,6 +31,8 @@
     int lastSpeedValue;
     int maxSpeed;
     
+    BOOL driveActive;
+    
     __weak IBOutlet UIButton *bleConnectButton;
     __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UIButton *driveButton;
@@ -69,21 +71,21 @@ int maxSpeedChange = 20;
     
     [self.rfduino setDelegate:self];
     
-    UIColor *start = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.15];
-    UIColor *stop = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.45];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    //gradient.frame = [self.view bounds];
-    gradient.frame = CGRectMake(0, 0, 1024, 1024);
-    gradient.colors = [NSArray arrayWithObjects:(id)start.CGColor, (id)stop.CGColor, nil];
-    [self.view.layer insertSublayer:gradient atIndex:0];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    
-    [tap setCancelsTouchesInView:NO];
-    [self.view addGestureRecognizer:tap];
+//    UIColor *start = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.15];
+//    UIColor *stop = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.45];
+//    
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    //gradient.frame = [self.view bounds];
+//    gradient.frame = CGRectMake(0, 0, 1024, 1024);
+//    gradient.colors = [NSArray arrayWithObjects:(id)start.CGColor, (id)stop.CGColor, nil];
+//    [self.view.layer insertSublayer:gradient atIndex:0];
+//    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(dismissKeyboard)];
+//    
+//    [tap setCancelsTouchesInView:NO];
+//    [self.view addGestureRecognizer:tap];
     
     output = 0;
     
@@ -91,6 +93,8 @@ int maxSpeedChange = 20;
     statusLabel.text = @"Scanning for Minibot";
     
     maxSpeed = 100;
+    
+    driveActive = NO;
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -100,35 +104,41 @@ int maxSpeedChange = 20;
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    timedThread = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeMotionTransmit) userInfo:nil repeats:YES];
+    timedThread = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(timeMotionTransmit) userInfo:nil repeats:YES];
 }
 
 -(void) timeMotionTransmit {
     // timed update method that gets device motion and transmits it to the toy
 
+    if (!self.rfduino)
+        return;
+    
     int speed = 0;
     int steer = 0;
     int weapon = 800; // 800 off, 250 on
     NSString* msg = @"";
 
-    //if (deadmanEnabled && driverAlive) {
+    if (driveActive) {
 
-    CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
-    CMAttitude *currentAttitude = currentDeviceMotion.attitude;
-    // Convert the radians yaw value to degrees then round up/down
-//    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
-    
-    float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
-    steer = ((pitch/60.0f) * -100);
-    steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
-    steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
-    
-    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
-    speed = (roll/30.0f) * maxSpeed;
-    speed = speed < zeroRange && speed > 0 ? 0 : speed > -zeroRange && speed < 0 ? 0 : speed;
-    speed = speed > maxSpeed ? maxSpeed : (speed < -maxSpeed ? -maxSpeed : speed);
-    
-    lastSpeedValue = speed;
+        CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
+        CMAttitude *currentAttitude = currentDeviceMotion.attitude;
+        // Convert the radians yaw value to degrees then round up/down
+    //    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
+        
+        float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
+        steer = ((pitch/60.0f) * -100);
+        steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
+        steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
+        
+        float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
+        speed = (roll/30.0f) * maxSpeed;
+        speed = speed < zeroRange && speed > 0 ? 0 : speed > -zeroRange && speed < 0 ? 0 : speed;
+        speed = speed > maxSpeed ? maxSpeed : (speed < -maxSpeed ? -maxSpeed : speed);
+        
+        lastSpeedValue = speed;
+    } else {
+        lastSpeedValue = 0;
+    }
     
     //weapon = weaponValue;
 
@@ -178,7 +188,8 @@ int maxSpeedChange = 20;
     
     NSString *controlString = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
-    NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
+    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
+    NSLog(@"%@", controlString);
     [self.rfduino send:dataString];
 }
 
@@ -193,9 +204,20 @@ int maxSpeedChange = 20;
 
 
 - (IBAction)bleConnectAction:(id)sender {
+    
+    RFduino *rfduino = [[rfduinoManager rfduinos] objectAtIndex:0];
+    
+    if (! rfduino.outOfRange) {
+        [rfduinoManager connectRFduino:rfduino];
+    }
 }
 
-- (IBAction)driveButtonAction:(id)sender {
+- (IBAction)driveButtonDownAction:(id)sender {
+    driveActive = YES;
+}
+
+- (IBAction)driveButtonAction:(UIButton *)sender {
+    driveActive = NO;
 }
 
 - (IBAction)magnetButtonAction:(id)sender {
@@ -204,7 +226,7 @@ int maxSpeedChange = 20;
 - (IBAction)weaponButtonAction:(id)sender {
 }
 
-#pragma mark - RfduinoDiscoveryDelegate methods
+#pragma mark - RfduinoDiscoveryDelegate Manager methods
 
 - (void)didDiscoverRFduino:(RFduino *)rfduino
 {
@@ -222,23 +244,25 @@ int maxSpeedChange = 20;
 - (void)didConnectRFduino:(RFduino *)rfduino
 {
     NSLog(@"didConnectRFduino");
-    
+    statusLabel.text = @"Minibot Active";
+
     [rfduinoManager stopScan];
 }
 
 - (void)didLoadServiceRFduino:(RFduino *)rfduino
 {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-//    MinibotDashboardViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"dashboardViewController"];
-//    viewController.rfduino = rfduino;
-//    
-//    [[self navigationController] pushViewController:viewController animated:YES];
+    bleConnectButton.hidden = YES;
+    self.rfduino = rfduino;
 }
 
 - (void)didDisconnectRFduino:(RFduino *)rfduino
 {
     NSLog(@"didDisconnectRFduino");
     
+    self.rfduino = nil;
+    
+    statusLabel.text = @"Minibot Disconnected";
+
     [rfduinoManager startScan];
 }
 
