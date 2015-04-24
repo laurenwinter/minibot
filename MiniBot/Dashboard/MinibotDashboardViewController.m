@@ -35,6 +35,8 @@
     
     BOOL driveActive;
     
+    NSString *recieveString;
+    
     __weak IBOutlet UIButton *bleConnectButton;
     __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UIButton *driveButton;
@@ -106,6 +108,15 @@ int maxSpeedChange = 20;
     timedThread = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(timeMotionTransmit) userInfo:nil repeats:YES];
 }
 
+- (void)didReceive:(NSData *)data
+{
+    NSLog(@"data = %@", data);
+
+//    for (int i = 0; i < len; i++) {
+//        recieveString += data[i];
+//    }
+}
+
 -(void) timeMotionTransmit {
     // timed update method that gets device motion and transmits it to the toy
 
@@ -115,7 +126,7 @@ int maxSpeedChange = 20;
     int speed = 0;
     int steer = 0;
     int weapon = 800; // 800 off, 250 on
-    NSString* msg = @"";
+                      //NSString* msg = @"";
 
     if (driveActive) {
 
@@ -246,7 +257,7 @@ int maxSpeedChange = 20;
 {
     NSLog(@"didConnectRFduino");
     statusLabel.text = @"Minibot Active";
-
+    
     [rfduinoManager stopScan];
 }
 
@@ -254,6 +265,7 @@ int maxSpeedChange = 20;
 {
     bleConnectButton.hidden = YES;
     self.rfduino = rfduino;
+    [rfduino setDelegate:self];
 }
 
 - (void)didDisconnectRFduino:(RFduino *)rfduino
