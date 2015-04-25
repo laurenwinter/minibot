@@ -14,7 +14,9 @@ String receiveString;
 
 int incomingByte = 0;
 
-char *inputString = "";         // a string to hold incoming data
+boolean inputStarted = false;
+int inputCount = 0;
+String inputString = "";         // a string to hold incoming data
 boolean stringComplete = false;  // whether the string is complete
 char ble_buf[20]; // BLE packet buffer is 20 bytes MAX.
 
@@ -52,7 +54,8 @@ void setup() {
 
 }
 
-void BLE_sendString(char *str){  
+void BLE_sendString(char *str){
+  
 int length = strlen(str);
 
   if( length <= 20){
@@ -63,15 +66,31 @@ int length = strlen(str);
 }
 
 void loop() {
+  /*
+  String s = "<abcde 12345>";
+  char charBuf[s.length()];
+  s.toCharArray(charBuf, s.length());
+  int length = strlen(charBuf);
+  RFduinoBLE.send(charBuf,length);
+  */
+  
+  
   if (stringComplete) {
         
     //Serial.print(inputString);
-        
+       
+       // 16 char are: ACCLxxxxyyyyzzzz 
+    String sendStr = inputString.substring(4,15);
     stringComplete = false;
-    strcpy(ble_buf, inputString);
-    BLE_sendString(ble_buf);
+    char charBuf[12];
+    sendStr.toCharArray(charBuf, 12);
+    RFduinoBLE.send(charBuf,12);
+    //strcpy(ble_buf, inputString);
+    //BLE_sendString(ble_buf);
     inputString = "";
+    inputStarted = false;
   }
+  
   
   /*if (Serial.available() > 0) {
                 // read the incoming byte:
@@ -112,18 +131,22 @@ void serialEvent() {
   while (Serial.available()) {
     // get the new byte:
     char inChar = (char)Serial.read();
+    
+    int inputLength = inputString.length();
 
     if (inChar == '<') {
         inputString = "";
-        inputString += inChar;
-    }
-    
-    int inputLength = strlen(inputString);
-    if (inputLength >= 20) {
-      stringComplete = true;
-    } else {
+        inputCount = 0;
+        inputStarted = true;
+    } else if (inputStarted == true) {
+      inputCount++;
       inputString += inChar;
     }
+    
+    if (inputCount >= 16) {
+       stringComplete = true;
+    }
+    
   }
 }
 
