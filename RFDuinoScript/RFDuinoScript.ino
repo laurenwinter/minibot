@@ -25,7 +25,7 @@ bool speedChanged;
 
 void setup() {
   //Serial.begin(baud rate, rx pin, tx pin)
-  Serial.begin(9600, 2, 1);
+  Serial.begin(9600, 3, 1);
     //Serial.begin(9600);
 
   
@@ -112,13 +112,18 @@ void serialEvent() {
   while (Serial.available()) {
     // get the new byte:
     char inChar = (char)Serial.read();
-    // add it to the inputString:
-    inputString += inChar;
-    // if the incoming character is a newline, set a flag
-    // so the main loop can do something about it:
-    //if (inChar == '>') {
+
+    if (inChar == '<') {
+        inputString = "";
+        inputString += inChar;
+    }
+    
+    int inputLength = strlen(inputString);
+    if (inputLength >= 20) {
       stringComplete = true;
-    //}
+    } else {
+      inputString += inChar;
+    }
   }
 }
 

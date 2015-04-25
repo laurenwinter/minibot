@@ -35,7 +35,9 @@
     
     BOOL driveActive;
     
-    NSString *recieveString;
+    NSMutableData *rxData;
+    NSString *rxMessage;
+    int messagesReceived;
     
     __weak IBOutlet UIButton *bleConnectButton;
     __weak IBOutlet UILabel *statusLabel;
@@ -78,6 +80,10 @@ int maxSpeedChange = 20;
     
     [self.rfduino setDelegate:self];
     
+    rxData = [[NSMutableData alloc] init];
+    rxMessage = nil;
+    messagesReceived = 0;
+    
     output = 0;
     
     bleConnectButton.hidden = YES;
@@ -111,10 +117,103 @@ int maxSpeedChange = 20;
 - (void)didReceive:(NSData *)data
 {
     NSLog(@"data = %@", data);
+    
+    [rxData appendBytes:([data bytes]) length:data.length];
+    
+    NSString *rxString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSLog(@" : %@", rxString);
+}
 
-//    for (int i = 0; i < len; i++) {
-//        recieveString += data[i];
-//    }
+- (void)parseData {
+    return;
+    
+    NSString *rxString = [[NSString alloc] initWithData:rxData encoding:NSASCIIStringEncoding];
+    NSLog(@"ASCII bytes read: %@", rxString);
+    rxMessage = nil;
+    for (int i = 0; i < [rxString length]; i++) {
+        char c = [rxString characterAtIndex:i];
+        if (c == '<') {
+            // beginning of a message string
+            rxMessage = @"<";
+        } else if (c == '>') {
+            // end of a message string
+            if ([rxMessage length] == 25) {
+                // valid message
+                rxMessage = [rxMessage stringByAppendingString:@">"];
+                [self handleMessage:rxMessage];
+                rxMessage = nil;
+                messagesReceived++;
+                // remove all buffer chars up through the >
+                [rxData replaceBytesInRange:NSMakeRange(0, i + 1) withBytes:NULL length:0];
+                break;
+            }
+        } else if (c == '#') {
+            // ping message
+            NSLog(@"Ping from robot");
+            messagesReceived++;
+            rxMessage = nil;
+            // remove all buffer chars up through the #
+            [rxData replaceBytesInRange:NSMakeRange(0, i + 1) withBytes:NULL length:0];
+        } else if (i > 0 && rxMessage != nil && [rxMessage length] > 0 && [rxMessage length] < 25) {
+            // a char so append to the rxMessage
+            rxMessage = [NSString stringWithFormat:@"%@%c", rxMessage, c];
+        }
+    }
+    if ([rxData length] > 100) {
+        [rxData replaceBytesInRange:NSMakeRange(0, [rxData length]) withBytes:NULL length:0];;
+    }
+}
+
+- (void) handleMessage:(NSString *)message {
+    NSLog(@"Valid message from robot: %@",message);
+//    NSRange textRange;
+//    textRange =[message rangeOfString:@"ACCL"];
+//    
+//    if(textRange.location != NSNotFound)
+//        {
+//        // Driver is alive
+//        [statusSprite setTexture:[[CCTextureCache sharedTextureCache] addImage:@"lego_dist1.png"]];
+//        [driverSprite setTexture:[[CCTextureCache sharedTextureCache] addImage:@"lego_leds_big1.png"]];
+//        driverAlive = YES;
+//        
+//        }
+//    
+//    textRange =[message rangeOfString:@"ACCD"];
+//    if(textRange.location != NSNotFound)
+//        {
+//        // // Driver is dead
+//        [statusSprite setTexture:[[CCTextureCache sharedTextureCache] addImage:@"lego_fail5.png"]];
+//        [driverSprite setTexture:[[CCTextureCache sharedTextureCache] addImage:@"lego_leds_big2.png"]];
+//        driverAlive = NO;
+//        }
+//    
+//    // Parse the x, y and z accel data
+//    NSRange range = NSMakeRange (5, 4);
+//    NSString *substring = [message substringWithRange:range];
+//    NSNumber *intXValue = [NSNumber numberWithInt:[substring intValue]];
+//    [self setAccelSprite:damageXSprite value:intXValue.intValue];
+//    
+//    range = NSMakeRange (9, 4);
+//    substring = [message substringWithRange:range];
+//    NSNumber *intYValue = [NSNumber numberWithInt:[substring intValue]];
+//    [self setAccelSprite:damageYSprite value:intYValue.intValue];
+//    
+//    range = NSMakeRange (13, 4);
+//    substring = [message substringWithRange:range];
+//    NSNumber *intZValue = [NSNumber numberWithInt:[substring intValue]];
+//    [self setAccelSprite:damageZSprite value:intZValue.intValue];
+//    
+//    [self setDamage:intXValue.intValue accY:intYValue.intValue accZ:intZValue.intValue];
+//    
+//    range = NSMakeRange (17, 4);
+//    substring = [message substringWithRange:range];
+//    NSNumber *intValue = [NSNumber numberWithInt:[substring intValue]];
+//    //NSLog(@"Sonar = %@", intValue);
+//    
+//    range = NSMakeRange (21, 4);
+//    substring = [message substringWithRange:range];
+//    intValue = [NSNumber numberWithInt:[substring intValue]];
+//    //NSLog(@"Commands = %@", intValue);
 }
 
 -(void) timeMotionTransmit {
@@ -203,6 +302,8 @@ int maxSpeedChange = 20;
     //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
     NSLog(@"%@", controlString);
     [self.rfduino send:dataString];
+    
+    [self parseData];
 }
 
 - (IBAction)disconnect:(id)sender
