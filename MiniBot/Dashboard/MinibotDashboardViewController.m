@@ -34,6 +34,8 @@
     int maxSpeed;
     
     BOOL driveActive;
+    BOOL magnetActive;
+    BOOL armActive;
     
     NSMutableData *rxData;
     NSString *rxMessage;
@@ -126,46 +128,6 @@ int maxSpeedChange = 20;
     [self handleMessage:rxString];
 }
 
-//- (void)parseData {
-//    return;
-//    
-//    NSString *rxString = [[NSString alloc] initWithData:rxData encoding:NSASCIIStringEncoding];
-//    NSLog(@"ASCII bytes read: %@", rxString);
-//    rxMessage = nil;
-//    for (int i = 0; i < [rxString length]; i++) {
-//        char c = [rxString characterAtIndex:i];
-//        if (c == '<') {
-//            // beginning of a message string
-//            rxMessage = @"<";
-//        } else if (c == '>') {
-//            // end of a message string
-//            if ([rxMessage length] == 25) {
-//                // valid message
-//                rxMessage = [rxMessage stringByAppendingString:@">"];
-//                [self handleMessage:rxMessage];
-//                rxMessage = nil;
-//                messagesReceived++;
-//                // remove all buffer chars up through the >
-//                [rxData replaceBytesInRange:NSMakeRange(0, i + 1) withBytes:NULL length:0];
-//                break;
-//            }
-//        } else if (c == '#') {
-//            // ping message
-//            NSLog(@"Ping from robot");
-//            messagesReceived++;
-//            rxMessage = nil;
-//            // remove all buffer chars up through the #
-//            [rxData replaceBytesInRange:NSMakeRange(0, i + 1) withBytes:NULL length:0];
-//        } else if (i > 0 && rxMessage != nil && [rxMessage length] > 0 && [rxMessage length] < 25) {
-//            // a char so append to the rxMessage
-//            rxMessage = [NSString stringWithFormat:@"%@%c", rxMessage, c];
-//        }
-//    }
-//    if ([rxData length] > 100) {
-//        [rxData replaceBytesInRange:NSMakeRange(0, [rxData length]) withBytes:NULL length:0];;
-//    }
-//}
-
 - (void) handleMessage:(NSString *)message {
     NSLog(@"Valid message from robot: %@",message);
 
@@ -197,8 +159,8 @@ int maxSpeedChange = 20;
     
     int speed = 0;
     int steer = 0;
-    int weapon = 800; // 800 off, 250 on
-                      //NSString* msg = @"";
+    int weapon = armActive ? 25 : 80; // 800 off, 250 on
+    int magnet = magnetActive ? 10 : 0; // 0 off, 10 on
 
     if (driveActive) {
 
@@ -270,10 +232,10 @@ int maxSpeedChange = 20;
     
     speedometerView.value = speed;
     
-    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%4d", steer, speed, weapon];
+    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
     //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
-    NSLog(@"%@", controlString);
+    //NSLog(@"%@", controlString);
     [self.rfduino send:dataString];
     
     //[self parseData];
