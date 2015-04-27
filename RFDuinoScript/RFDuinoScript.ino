@@ -22,7 +22,7 @@ char ble_buf[20]; // BLE packet buffer is 20 bytes MAX.
 
 void setup() {
   //Serial.begin(baud rate, rx pin, tx pin)
-  Serial.begin(9600, 3, 1);
+  Serial.begin(9600, 0, 1);
 
   //s1.attach(2);
   //s2.attach(3);

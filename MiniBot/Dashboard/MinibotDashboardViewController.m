@@ -268,7 +268,12 @@ int maxSpeedChange = 20;
     driveActive = NO;
 }
 
+- (IBAction)magnetButtonDownAction:(id)sender {
+    magnetActive = YES;
+}
+
 - (IBAction)magnetButtonAction:(id)sender {
+    magnetActive = NO;
 }
 
 - (IBAction)weaponButtonAction:(id)sender {
