@@ -1,10 +1,10 @@
 #include <Servo.h>
 #include <RFduinoBLE.h>
 
-//Servo s1;
+Servo s1;
 //Servo s2;
 //Servo s3;
-Servo s4;
+//Servo s4;
 
 int steerValue;
 int speedValue;
@@ -24,7 +24,7 @@ void setup() {
   //Serial.begin(baud rate, rx pin, tx pin)
   Serial.begin(9600, 0, 1);
 
-  //s1.attach(2);
+  s1.attach(2);
   //s2.attach(3);
   //s3.attach(4);
   //s4.attach(5);
@@ -74,6 +74,13 @@ void loop() {
     controlString += ' ' + armString + '0';
 
     String magnetString = receiveString.substring(10, 12);
+    if (magnetString == "10") {
+      //Serial.println("mag on:" + magnetString);
+      s1.write(179);
+    } else {
+      //Serial.println("mag off:" + magnetString);
+      s1.write(90);
+    }
     
     // Create the 26 char ARM protocol string and send it
     // "<DRIV ddddsssswwww   0   0>" <DRIV-100-100 800   0   0>

@@ -26,6 +26,11 @@
 		BB6FC4511AD75E5100FB57C1 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44A1AD75E5100FB57C1 /* RfduinoManager.m */; };
 		BB6FC4521AD75E5100FB57C1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */; };
 		BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */ = {isa = PBXBuildFile; fileRef = BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */; };
+		BBC905061AEF0614000DFB6E /* blackPerfPlate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBC905051AEF0614000DFB6E /* blackPerfPlate.jpg */; };
+		BBC905081AEF07B2000DFB6E /* brushedSilverPlate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBC905071AEF07B2000DFB6E /* brushedSilverPlate.jpg */; };
+		BBC9050A1AEF08E1000DFB6E /* black-brushed-metal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBC905091AEF08E1000DFB6E /* black-brushed-metal.jpg */; };
+		BBC9050C1AEF16DA000DFB6E /* silver3Dbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC9050B1AEF16DA000DFB6E /* silver3Dbutton.png */; };
+		BBC9050E1AEF16E1000DFB6E /* SilverSqButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC9050D1AEF16E1000DFB6E /* SilverSqButton.png */; };
 		BBD3CDB11ADF4A2300D19C31 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */; };
 		BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */; };
 		BBE5AA561AE89A110037CBC0 /* MeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE5AA551AE89A110037CBC0 /* MeterView.m */; };
@@ -75,6 +80,11 @@
 		BB6FC44C1AD75E5100FB57C1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFDuinoScript.ino; sourceTree = "<group>"; };
+		BBC905051AEF0614000DFB6E /* blackPerfPlate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackPerfPlate.jpg; sourceTree = "<group>"; };
+		BBC905071AEF07B2000DFB6E /* brushedSilverPlate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brushedSilverPlate.jpg; sourceTree = "<group>"; };
+		BBC905091AEF08E1000DFB6E /* black-brushed-metal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "black-brushed-metal.jpg"; sourceTree = "<group>"; };
+		BBC9050B1AEF16DA000DFB6E /* silver3Dbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silver3Dbutton.png; sourceTree = "<group>"; };
+		BBC9050D1AEF16E1000DFB6E /* SilverSqButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SilverSqButton.png; sourceTree = "<group>"; };
 		BBD3CDB01ADF4A2300D19C31 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minibotHUD1.png; sourceTree = "<group>"; };
 		BBE5AA541AE89A110037CBC0 /* MeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterView.h; sourceTree = "<group>"; };
@@ -206,6 +216,11 @@
 		BBD3CDB21ADF53C200D19C31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BBC9050D1AEF16E1000DFB6E /* SilverSqButton.png */,
+				BBC9050B1AEF16DA000DFB6E /* silver3Dbutton.png */,
+				BBC905091AEF08E1000DFB6E /* black-brushed-metal.jpg */,
+				BBC905071AEF07B2000DFB6E /* brushedSilverPlate.jpg */,
+				BBC905051AEF0614000DFB6E /* blackPerfPlate.jpg */,
 				BBD3CDB31ADF53C200D19C31 /* minibotHUD1.png */,
 			);
 			path = Resources;
@@ -307,8 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB6FC41D1AD7584800FB57C1 /* Main.storyboard in Resources */,
+				BBC9050C1AEF16DA000DFB6E /* silver3Dbutton.png in Resources */,
+				BBC9050E1AEF16E1000DFB6E /* SilverSqButton.png in Resources */,
+				BBC905081AEF07B2000DFB6E /* brushedSilverPlate.jpg in Resources */,
+				BBC905061AEF0614000DFB6E /* blackPerfPlate.jpg in Resources */,
 				BB6FC4221AD7584800FB57C1 /* LaunchScreen.xib in Resources */,
 				BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */,
+				BBC9050A1AEF08E1000DFB6E /* black-brushed-metal.jpg in Resources */,
 				BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */,
 				BB6FC41F1AD7584800FB57C1 /* Images.xcassets in Resources */,
 			);
