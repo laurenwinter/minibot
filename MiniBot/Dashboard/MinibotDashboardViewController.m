@@ -96,12 +96,14 @@ int maxSpeedChange = 20;
     driveActive = NO;
     
     // Meter View
-    speedometerView.textLabel.text = @"km/h";
-    speedometerView.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-BoldItalic" size:18.0];
-    speedometerView.lineWidth = 2.5;
+    speedometerView.textLabel.text = @"m/sec";
+    speedometerView.textLabel.font = [UIFont fontWithName:@"AvenirNext" size:18.0];
+    speedometerView.lineWidth = 1.5;
     speedometerView.minorTickLength = 15.0;
     speedometerView.needle.width = 3.0;
-    speedometerView.textLabel.textColor = [UIColor colorWithRed:0.7 green:1.0 blue:1.0 alpha:1.0];
+    speedometerView.textLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    speedometerView.needle.tintColor = [UIColor redColor];
+
     
     speedometerView.value = 0.0;
 }
@@ -230,7 +232,7 @@ int maxSpeedChange = 20;
 //    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
 //    [self.rfduino send:dataAll];
     
-    speedometerView.value = speed;
+    speedometerView.value = abs(speed);
     
     NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];

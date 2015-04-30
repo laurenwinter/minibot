@@ -25,6 +25,9 @@
 		BB6FC4501AD75E5100FB57C1 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4471AD75E5100FB57C1 /* RFduino.m */; };
 		BB6FC4511AD75E5100FB57C1 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44A1AD75E5100FB57C1 /* RfduinoManager.m */; };
 		BB6FC4521AD75E5100FB57C1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */; };
+		BBAA253D1AF1BCCD003CE98F /* hud-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA253C1AF1BCCD003CE98F /* hud-orange.png */; };
+		BBAA253F1AF1C26D003CE98F /* mainButtonOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */; };
+		BBAA25411AF1C716003CE98F /* magnetButtonOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */; };
 		BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */ = {isa = PBXBuildFile; fileRef = BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */; };
 		BBC905061AEF0614000DFB6E /* blackPerfPlate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBC905051AEF0614000DFB6E /* blackPerfPlate.jpg */; };
 		BBC905081AEF07B2000DFB6E /* brushedSilverPlate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBC905071AEF07B2000DFB6E /* brushedSilverPlate.jpg */; };
@@ -79,6 +82,9 @@
 		BB6FC44B1AD75E5100FB57C1 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
 		BB6FC44C1AD75E5100FB57C1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		BBAA253C1AF1BCCD003CE98F /* hud-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-orange.png"; sourceTree = "<group>"; };
+		BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainButtonOrange.png; sourceTree = "<group>"; };
+		BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnetButtonOrange.png; sourceTree = "<group>"; };
 		BBAC61B31AE1B7110020742F /* RFDuinoScript.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RFDuinoScript.ino; sourceTree = "<group>"; };
 		BBC905051AEF0614000DFB6E /* blackPerfPlate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackPerfPlate.jpg; sourceTree = "<group>"; };
 		BBC905071AEF07B2000DFB6E /* brushedSilverPlate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brushedSilverPlate.jpg; sourceTree = "<group>"; };
@@ -216,6 +222,9 @@
 		BBD3CDB21ADF53C200D19C31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */,
+				BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */,
+				BBAA253C1AF1BCCD003CE98F /* hud-orange.png */,
 				BBC9050D1AEF16E1000DFB6E /* SilverSqButton.png */,
 				BBC9050B1AEF16DA000DFB6E /* silver3Dbutton.png */,
 				BBC905091AEF08E1000DFB6E /* black-brushed-metal.jpg */,
@@ -325,11 +334,14 @@
 				BBC9050C1AEF16DA000DFB6E /* silver3Dbutton.png in Resources */,
 				BBC9050E1AEF16E1000DFB6E /* SilverSqButton.png in Resources */,
 				BBC905081AEF07B2000DFB6E /* brushedSilverPlate.jpg in Resources */,
+				BBAA253F1AF1C26D003CE98F /* mainButtonOrange.png in Resources */,
 				BBC905061AEF0614000DFB6E /* blackPerfPlate.jpg in Resources */,
 				BB6FC4221AD7584800FB57C1 /* LaunchScreen.xib in Resources */,
 				BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */,
 				BBC9050A1AEF08E1000DFB6E /* black-brushed-metal.jpg in Resources */,
+				BBAA25411AF1C716003CE98F /* magnetButtonOrange.png in Resources */,
 				BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */,
+				BBAA253D1AF1BCCD003CE98F /* hud-orange.png in Resources */,
 				BB6FC41F1AD7584800FB57C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
