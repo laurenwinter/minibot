@@ -74,13 +74,12 @@ void loop() {
     controlString += ' ' + armString + '0';
 
     String magnetString = receiveString.substring(10, 12);
+    int magValue = 0;
     if (magnetString == "10") {
       //Serial.println("mag on:" + magnetString);
-      s1.write(179);
-    } else {
-      //Serial.println("mag off:" + magnetString);
-      s1.write(90);
+      magValue = 180;
     }
+    s1.write(magValue);
     
     // Create the 26 char ARM protocol string and send it
     // "<DRIV ddddsssswwww   0   0>" <DRIV-100-100 800   0   0>

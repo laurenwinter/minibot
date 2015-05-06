@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hud-orange.png" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hud-green.png" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -44,7 +44,7 @@
                                     <action selector="bleConnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNJ-oA-wKk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
                                 <rect key="frame" x="527" y="65" width="57" height="59"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -129,6 +129,7 @@
                     <connections>
                         <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
+                        <outlet property="hudImageBackground" destination="gpg-ai-pwN" id="lYh-pN-lqG"/>
                         <outlet property="magnetButton" destination="eiO-De-cON" id="Tgv-9b-lPA"/>
                         <outlet property="speedometerView" destination="SjC-XE-81q" id="aK8-pb-6nT"/>
                         <outlet property="statusLabel" destination="CCd-bp-qD4" id="95X-uD-jgl"/>
@@ -142,7 +143,7 @@
     </scenes>
     <resources>
         <image name="SilverSqButton.png" width="400" height="320"/>
-        <image name="hud-orange.png" width="1459" height="820"/>
+        <image name="hud-green.png" width="1459" height="820"/>
         <image name="magnetButtonOrange.png" width="198" height="184"/>
         <image name="mainButtonOrange.png" width="198" height="184"/>
         <image name="silver3Dbutton.png" width="259" height="258"/>

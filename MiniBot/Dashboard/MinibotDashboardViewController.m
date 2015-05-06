@@ -49,6 +49,7 @@
     
     __weak IBOutlet MeterView *speedometerView;
 
+    __weak IBOutlet UIImageView *hudImageBackground;
 }
 
 int zeroRange = 5;
@@ -272,10 +273,12 @@ int maxSpeedChange = 20;
 
 - (IBAction)magnetButtonDownAction:(id)sender {
     magnetActive = YES;
+    hudImageBackground.image = [UIImage imageNamed:@"hud-fuchsia.png"];
 }
 
 - (IBAction)magnetButtonAction:(id)sender {
     magnetActive = NO;
+    hudImageBackground.image = [UIImage imageNamed:@"hud-green.png"];
 }
 
 - (IBAction)weaponButtonAction:(id)sender {

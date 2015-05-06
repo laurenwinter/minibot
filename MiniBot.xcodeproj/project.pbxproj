@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BB3EAB4F1ADD8B960073E134 /* MinibotDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3EAB4E1ADD8B960073E134 /* MinibotDashboardViewController.m */; };
+		BB6DC0451AF9D3300004D087 /* hud-fuchsia.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */; };
+		BB6DC0461AF9D3300004D087 /* hud-green.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0441AF9D3300004D087 /* hud-green.png */; };
 		BB6FC4141AD7584800FB57C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4131AD7584800FB57C1 /* main.m */; };
 		BB6FC4171AD7584800FB57C1 /* MiniBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4161AD7584800FB57C1 /* MiniBotAppDelegate.m */; };
 		BB6FC41A1AD7584800FB57C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4191AD7584800FB57C1 /* ViewController.m */; };
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		BB3EAB4D1ADD8B960073E134 /* MinibotDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MinibotDashboardViewController.h; path = Dashboard/MinibotDashboardViewController.h; sourceTree = "<group>"; };
 		BB3EAB4E1ADD8B960073E134 /* MinibotDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinibotDashboardViewController.m; path = Dashboard/MinibotDashboardViewController.m; sourceTree = "<group>"; };
+		BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-fuchsia.png"; sourceTree = "<group>"; };
+		BB6DC0441AF9D3300004D087 /* hud-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-green.png"; sourceTree = "<group>"; };
 		BB6FC40E1AD7584800FB57C1 /* MiniBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6FC4121AD7584800FB57C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6FC4131AD7584800FB57C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 		BBD3CDB21ADF53C200D19C31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */,
+				BB6DC0441AF9D3300004D087 /* hud-green.png */,
 				BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */,
 				BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */,
 				BBAA253C1AF1BCCD003CE98F /* hud-orange.png */,
@@ -341,7 +347,9 @@
 				BBC9050A1AEF08E1000DFB6E /* black-brushed-metal.jpg in Resources */,
 				BBAA25411AF1C716003CE98F /* magnetButtonOrange.png in Resources */,
 				BBAC61B41AE1B7120020742F /* RFDuinoScript.ino in Resources */,
+				BB6DC0451AF9D3300004D087 /* hud-fuchsia.png in Resources */,
 				BBAA253D1AF1BCCD003CE98F /* hud-orange.png in Resources */,
+				BB6DC0461AF9D3300004D087 /* hud-green.png in Resources */,
 				BB6FC41F1AD7584800FB57C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
