@@ -29,21 +29,6 @@
                                     <constraint firstAttribute="width" constant="238" id="ggQ-06-LbX"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gos-AY-U0y" userLabel="Connect BLE">
-                                <rect key="frame" x="200" y="544" width="200" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="MNL-u8-eUC"/>
-                                    <constraint firstAttribute="height" constant="50" id="Qs4-4y-FXd"/>
-                                </constraints>
-                                <state key="normal" image="SilverSqButton.png">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="bleConnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNJ-oA-wKk"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
                                 <rect key="frame" x="527" y="65" width="57" height="59"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -75,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="175" id="9PX-TZ-GpE"/>
                                     <constraint firstAttribute="width" constant="175" id="UkL-rc-94e"/>
                                 </constraints>
-                                <state key="normal" image="mainButtonOrange.png">
+                                <state key="normal" image="mainButtonSilver.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -92,13 +77,28 @@
                                     <constraint firstAttribute="height" constant="175" id="5ab-0M-gpg"/>
                                     <constraint firstAttribute="width" constant="175" id="hrO-TV-zX3"/>
                                 </constraints>
-                                <state key="normal" image="magnetButtonOrange.png">
+                                <state key="normal" image="magnetButtonSilver.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="magnetButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7bI-Sq-fo1"/>
                                     <action selector="magnetButtonDownAction:" destination="BYZ-38-t0r" eventType="touchDown" id="gPC-EW-uDs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gos-AY-U0y" userLabel="Connect BLE">
+                                <rect key="frame" x="275" y="534" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="MNL-u8-eUC"/>
+                                    <constraint firstAttribute="height" constant="50" id="Qs4-4y-FXd"/>
+                                </constraints>
+                                <state key="normal" image="silver3Dbutton.png">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bleConnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNJ-oA-wKk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -117,11 +117,17 @@
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="dJV-m0-yuP"/>
                             <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="hMf-ra-j60"/>
                             <constraint firstAttribute="centerX" secondItem="gos-AY-U0y" secondAttribute="centerX" id="jH9-zE-hqa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gos-AY-U0y" secondAttribute="bottom" constant="16" id="kJz-Nh-PW0"/>
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="-0.5" id="knX-Pt-RBm"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nmP-ux-BMd"/>
                             <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PGQ-kf-iSe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -142,10 +148,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SilverSqButton.png" width="400" height="320"/>
         <image name="hud-green.png" width="1459" height="820"/>
-        <image name="magnetButtonOrange.png" width="198" height="184"/>
-        <image name="mainButtonOrange.png" width="198" height="184"/>
+        <image name="magnetButtonSilver.png" width="198" height="184"/>
+        <image name="mainButtonSilver.png" width="198" height="184"/>
         <image name="silver3Dbutton.png" width="259" height="258"/>
     </resources>
 </document>

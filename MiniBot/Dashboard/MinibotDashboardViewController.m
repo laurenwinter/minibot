@@ -102,7 +102,7 @@ int maxSpeedChange = 20;
     speedometerView.lineWidth = 1.5;
     speedometerView.minorTickLength = 15.0;
     speedometerView.needle.width = 3.0;
-    speedometerView.textLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    speedometerView.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.85 blue:0.95 alpha:1.0];
     speedometerView.needle.tintColor = [UIColor redColor];
 
     

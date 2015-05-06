@@ -10,6 +10,8 @@
 		BB3EAB4F1ADD8B960073E134 /* MinibotDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3EAB4E1ADD8B960073E134 /* MinibotDashboardViewController.m */; };
 		BB6DC0451AF9D3300004D087 /* hud-fuchsia.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */; };
 		BB6DC0461AF9D3300004D087 /* hud-green.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0441AF9D3300004D087 /* hud-green.png */; };
+		BB6DC0491AFA64FA0004D087 /* magnetButtonSilver.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0471AFA64FA0004D087 /* magnetButtonSilver.png */; };
+		BB6DC04A1AFA64FA0004D087 /* mainButtonSilver.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6DC0481AFA64FA0004D087 /* mainButtonSilver.png */; };
 		BB6FC4141AD7584800FB57C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4131AD7584800FB57C1 /* main.m */; };
 		BB6FC4171AD7584800FB57C1 /* MiniBotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4161AD7584800FB57C1 /* MiniBotAppDelegate.m */; };
 		BB6FC41A1AD7584800FB57C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4191AD7584800FB57C1 /* ViewController.m */; };
@@ -56,6 +58,8 @@
 		BB3EAB4E1ADD8B960073E134 /* MinibotDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MinibotDashboardViewController.m; path = Dashboard/MinibotDashboardViewController.m; sourceTree = "<group>"; };
 		BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-fuchsia.png"; sourceTree = "<group>"; };
 		BB6DC0441AF9D3300004D087 /* hud-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-green.png"; sourceTree = "<group>"; };
+		BB6DC0471AFA64FA0004D087 /* magnetButtonSilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnetButtonSilver.png; sourceTree = "<group>"; };
+		BB6DC0481AFA64FA0004D087 /* mainButtonSilver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainButtonSilver.png; sourceTree = "<group>"; };
 		BB6FC40E1AD7584800FB57C1 /* MiniBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6FC4121AD7584800FB57C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB6FC4131AD7584800FB57C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 		BBD3CDB21ADF53C200D19C31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB6DC0471AFA64FA0004D087 /* magnetButtonSilver.png */,
+				BB6DC0481AFA64FA0004D087 /* mainButtonSilver.png */,
 				BB6DC0431AF9D3300004D087 /* hud-fuchsia.png */,
 				BB6DC0441AF9D3300004D087 /* hud-green.png */,
 				BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */,
@@ -340,8 +346,10 @@
 				BBC9050C1AEF16DA000DFB6E /* silver3Dbutton.png in Resources */,
 				BBC9050E1AEF16E1000DFB6E /* SilverSqButton.png in Resources */,
 				BBC905081AEF07B2000DFB6E /* brushedSilverPlate.jpg in Resources */,
+				BB6DC04A1AFA64FA0004D087 /* mainButtonSilver.png in Resources */,
 				BBAA253F1AF1C26D003CE98F /* mainButtonOrange.png in Resources */,
 				BBC905061AEF0614000DFB6E /* blackPerfPlate.jpg in Resources */,
+				BB6DC0491AFA64FA0004D087 /* magnetButtonSilver.png in Resources */,
 				BB6FC4221AD7584800FB57C1 /* LaunchScreen.xib in Resources */,
 				BBD3CDB41ADF53C200D19C31 /* minibotHUD1.png in Resources */,
 				BBC9050A1AEF08E1000DFB6E /* black-brushed-metal.jpg in Resources */,
