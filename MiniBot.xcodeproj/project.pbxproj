@@ -29,6 +29,7 @@
 		BB6FC4501AD75E5100FB57C1 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC4471AD75E5100FB57C1 /* RFduino.m */; };
 		BB6FC4511AD75E5100FB57C1 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44A1AD75E5100FB57C1 /* RfduinoManager.m */; };
 		BB6FC4521AD75E5100FB57C1 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */; };
+		BB9531C21AFA7437006CD0ED /* F3BarGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9531C11AFA7437006CD0ED /* F3BarGauge.m */; };
 		BBAA253D1AF1BCCD003CE98F /* hud-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA253C1AF1BCCD003CE98F /* hud-orange.png */; };
 		BBAA253F1AF1C26D003CE98F /* mainButtonOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */; };
 		BBAA25411AF1C716003CE98F /* magnetButtonOrange.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */; };
@@ -90,6 +91,8 @@
 		BB6FC44B1AD75E5100FB57C1 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
 		BB6FC44C1AD75E5100FB57C1 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		BB9531C01AFA7437006CD0ED /* F3BarGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3BarGauge.h; sourceTree = "<group>"; };
+		BB9531C11AFA7437006CD0ED /* F3BarGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3BarGauge.m; sourceTree = "<group>"; };
 		BBAA253C1AF1BCCD003CE98F /* hud-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hud-orange.png"; sourceTree = "<group>"; };
 		BBAA253E1AF1C26D003CE98F /* mainButtonOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainButtonOrange.png; sourceTree = "<group>"; };
 		BBAA25401AF1C716003CE98F /* magnetButtonOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnetButtonOrange.png; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 		BB6FC4101AD7584800FB57C1 /* MiniBot */ = {
 			isa = PBXGroup;
 			children = (
+				BB9531BF1AFA7437006CD0ED /* F3BarGauge */,
 				BBE5AA531AE89A110037CBC0 /* MeterView */,
 				BBAC61B21AE1B7110020742F /* RFDuinoScript */,
 				BBD3CDB21ADF53C200D19C31 /* Resources */,
@@ -217,6 +221,15 @@
 				BB6FC44D1AD75E5100FB57C1 /* ScanViewController.m */,
 			);
 			path = rfduino;
+			sourceTree = "<group>";
+		};
+		BB9531BF1AFA7437006CD0ED /* F3BarGauge */ = {
+			isa = PBXGroup;
+			children = (
+				BB9531C01AFA7437006CD0ED /* F3BarGauge.h */,
+				BB9531C11AFA7437006CD0ED /* F3BarGauge.m */,
+			);
+			path = F3BarGauge;
 			sourceTree = "<group>";
 		};
 		BBAC61B21AE1B7110020742F /* RFDuinoScript */ = {
@@ -385,6 +398,7 @@
 				BB6FC4171AD7584800FB57C1 /* MiniBotAppDelegate.m in Sources */,
 				BB6FC4501AD75E5100FB57C1 /* RFduino.m in Sources */,
 				BB6FC44F1AD75E5100FB57C1 /* CustomCellBackground.m in Sources */,
+				BB9531C21AFA7437006CD0ED /* F3BarGauge.m in Sources */,
 				BB6FC4141AD7584800FB57C1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -101,19 +101,38 @@
                                     <action selector="bleConnectAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNJ-oA-wKk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfc-Ql-gwX" userLabel="Right Bar Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="300" y="107" width="180" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="bs5-y6-vbV"/>
+                                    <constraint firstAttribute="width" constant="180" id="lYM-08-SUn"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFo-zz-rIG" userLabel="Left Bar Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="120" y="107" width="180" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="SW5-HC-Q58"/>
+                                    <constraint firstAttribute="width" constant="180" id="b6E-vK-fvC"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CCd-bp-qD4" secondAttribute="trailing" id="4lJ-P3-AQr"/>
                             <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="6Ak-kJ-w6B"/>
+                            <constraint firstItem="Zfc-Ql-gwX" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="41" id="773-zm-ktj"/>
                             <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="8yo-Jg-Mjb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
                             <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Bfg-Ye-E8p"/>
+                            <constraint firstItem="rFo-zz-rIG" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="41" id="HjQ-ML-nlf"/>
                             <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="JkO-AS-qbk"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="KPf-Dj-9dB"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
                             <constraint firstAttribute="centerX" secondItem="SjC-XE-81q" secondAttribute="centerX" id="M2q-7g-m3P"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gos-AY-U0y" secondAttribute="bottom" constant="6" id="PGQ-kf-iSe"/>
+                            <constraint firstAttribute="centerX" secondItem="Zfc-Ql-gwX" secondAttribute="centerX" constant="-90" id="Phw-JZ-yNQ"/>
+                            <constraint firstAttribute="centerX" secondItem="rFo-zz-rIG" secondAttribute="centerX" constant="90" id="We8-aa-AXk"/>
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="dJV-m0-yuP"/>
                             <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="hMf-ra-j60"/>
                             <constraint firstAttribute="centerX" secondItem="gos-AY-U0y" secondAttribute="centerX" id="jH9-zE-hqa"/>
@@ -123,11 +142,6 @@
                             <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="PGQ-kf-iSe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -136,7 +150,9 @@
                         <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
                         <outlet property="hudImageBackground" destination="gpg-ai-pwN" id="lYh-pN-lqG"/>
+                        <outlet property="leftBarGauge" destination="rFo-zz-rIG" id="Ywy-1f-0fB"/>
                         <outlet property="magnetButton" destination="eiO-De-cON" id="Tgv-9b-lPA"/>
+                        <outlet property="rightBarGauge" destination="Zfc-Ql-gwX" id="Xle-cZ-3KU"/>
                         <outlet property="speedometerView" destination="SjC-XE-81q" id="aK8-pb-6nT"/>
                         <outlet property="statusLabel" destination="CCd-bp-qD4" id="95X-uD-jgl"/>
                         <outlet property="weaponButton" destination="lkU-K5-Lta" id="ngU-WC-zTC"/>

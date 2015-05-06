@@ -11,6 +11,7 @@
 #import "RFduino.h"
 
 #import "MeterView.h"
+#import "F3BarGauge.h"
 
 /** @def CC_DEGREES_TO_RADIANS
  converts degrees to radians
@@ -48,7 +49,11 @@
     __weak IBOutlet UIButton *magnetButton;
     
     __weak IBOutlet MeterView *speedometerView;
-
+    
+    __weak IBOutlet F3BarGauge *rightBarGauge;
+    __weak IBOutlet F3BarGauge *leftBarGauge;
+    
+    
     __weak IBOutlet UIImageView *hudImageBackground;
 }
 
@@ -96,7 +101,7 @@ int maxSpeedChange = 20;
     
     driveActive = NO;
     
-    // Meter View
+    // Speed Meter View
     speedometerView.textLabel.text = @"m/sec";
     speedometerView.textLabel.font = [UIFont fontWithName:@"AvenirNext" size:18.0];
     speedometerView.lineWidth = 1.5;
@@ -104,9 +109,12 @@ int maxSpeedChange = 20;
     speedometerView.needle.width = 3.0;
     speedometerView.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.85 blue:0.95 alpha:1.0];
     speedometerView.needle.tintColor = [UIColor redColor];
-
-    
     speedometerView.value = 0.0;
+
+    // Steering bar gauges
+    rightBarGauge.outerBorderColor = UIColor.blackColor;
+    leftBarGauge.outerBorderColor = UIColor.blackColor;
+    leftBarGauge.reverse = YES;
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -176,6 +184,14 @@ int maxSpeedChange = 20;
         steer = ((pitch/60.0f) * -100);
         steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
         steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
+        
+        if (steer > 0) {
+            leftBarGauge.value = 0;
+            rightBarGauge.value = steer/100.0;
+        } else {
+            leftBarGauge.value = abs(steer)/100.0;
+            rightBarGauge.value = 0;
+        }
         
         float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
         speed = (roll/30.0f) * maxSpeed;
