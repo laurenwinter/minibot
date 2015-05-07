@@ -113,7 +113,13 @@ int maxSpeedChange = 20;
 
     // Steering bar gauges
     rightBarGauge.outerBorderColor = UIColor.blackColor;
+    rightBarGauge.warningBarColor = UIColor.cyanColor;
+    rightBarGauge.warnThreshold = 0.4;
+    rightBarGauge.dangerThreshold = 0.8;
     leftBarGauge.outerBorderColor = UIColor.blackColor;
+    leftBarGauge.warningBarColor = UIColor.cyanColor;
+    leftBarGauge.warnThreshold = 0.4;
+    leftBarGauge.dangerThreshold = 0.8;
     leftBarGauge.reverse = YES;
 }
 
@@ -169,35 +175,40 @@ int maxSpeedChange = 20;
         return;
     
     int speed = 0;
+    int speedVal = 0;
     int steer = 0;
+    int steerVal = 0;
     int weapon = armActive ? 25 : 80; // 800 off, 250 on
     int magnet = magnetActive ? 10 : 0; // 0 off, 10 on
 
-    if (driveActive) {
+    CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
+    CMAttitude *currentAttitude = currentDeviceMotion.attitude;
+    // Convert the radians yaw value to degrees then round up/down
+//    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
+    
+    float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
+    steerVal = ((pitch/60.0f) * -100);
+    steerVal = steerVal < zeroSteerRange && steerVal > 0 ? 0 : steerVal > -zeroSteerRange && steerVal < 0 ? 0 : steerVal;
+    steerVal = steerVal > 100 ? 100 : (steerVal < -100 ? -100 : steerVal);
+    
+    if (steerVal < 0) {
+        leftBarGauge.value = 0;
+        rightBarGauge.value = abs(steerVal)/90.0;
+    } else {
+        leftBarGauge.value = abs(steerVal)/90.0;
+        rightBarGauge.value = 0;
+    }
+    
+    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
+    speedVal = (roll/30.0f) * maxSpeed;
+    speedVal = speedVal < zeroRange && speedVal > 0 ? 0 : speedVal > -zeroRange && speedVal < 0 ? 0 : speedVal;
+    speedVal = speedVal > maxSpeed ? maxSpeed : (speedVal < -maxSpeed ? -maxSpeed : speedVal);
 
-        CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
-        CMAttitude *currentAttitude = currentDeviceMotion.attitude;
-        // Convert the radians yaw value to degrees then round up/down
-    //    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
-        
-        float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
-        steer = ((pitch/60.0f) * -100);
-        steer = steer < zeroSteerRange && steer > 0 ? 0 : steer > -zeroSteerRange && steer < 0 ? 0 : steer;
-        steer = steer > 100 ? 100 : (steer < -100 ? -100 : steer);
-        
-        if (steer > 0) {
-            leftBarGauge.value = 0;
-            rightBarGauge.value = steer/100.0;
-        } else {
-            leftBarGauge.value = abs(steer)/100.0;
-            rightBarGauge.value = 0;
-        }
-        
-        float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
-        speed = (roll/30.0f) * maxSpeed;
-        speed = speed < zeroRange && speed > 0 ? 0 : speed > -zeroRange && speed < 0 ? 0 : speed;
-        speed = speed > maxSpeed ? maxSpeed : (speed < -maxSpeed ? -maxSpeed : speed);
-        
+    speedometerView.value = abs(speedVal);
+
+    if (driveActive) {
+        steer = steerVal;
+        speed = speedVal;
         lastSpeedValue = speed;
     } else {
         lastSpeedValue = 0;
@@ -249,7 +260,6 @@ int maxSpeedChange = 20;
 //    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
 //    [self.rfduino send:dataAll];
     
-    speedometerView.value = abs(speed);
     
     NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
     NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
