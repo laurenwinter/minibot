@@ -124,6 +124,16 @@ int maxSpeedChange = 20;
     leftBarGauge.warnThreshold = 0.4;
     leftBarGauge.dangerThreshold = 0.8;
     leftBarGauge.reverse = YES;
+    
+    // Acc bar gauges
+    accLeftGauge.outerBorderColor = UIColor.blackColor;
+    accLeftGauge.holdPeak = YES;
+    
+    accCenterGauge.outerBorderColor = UIColor.blackColor;
+    accCenterGauge.holdPeak = YES;
+
+    accRightGauge.outerBorderColor = UIColor.blackColor;
+    accRightGauge.holdPeak = YES;
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -168,8 +178,8 @@ int maxSpeedChange = 20;
     //[self setAccelSprite:damageZSprite value:intZValue.intValue];
     
     accLeftGauge.value = intXValue.floatValue;
-    accCenterGauge.value = intYValue.floatValue;
-    accRightGauge.value = intZValue.floatValue;
+    accCenterGauge.value = intZValue.floatValue;
+    accRightGauge.value = intYValue.floatValue;
     
     statusLabel.text = @""; //[NSString stringWithFormat:@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue];
     //[self setDamage:intXValue.intValue accY:intYValue.intValue accZ:intZValue.intValue];

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Minibot Dashboard View Controller-->
@@ -14,23 +15,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hud-green.png" translatesAutoresizingMaskIntoConstraints="NO" id="gpg-ai-pwN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-XE-81q" userLabel="Meter View" customClass="MeterView">
-                                <rect key="frame" x="181" y="196" width="238" height="208"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="8wA-vg-HQ7"/>
-                                    <constraint firstAttribute="width" constant="238" id="ggQ-06-LbX"/>
-                                </constraints>
-                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
-                                <rect key="frame" x="527" y="65" width="57" height="59"/>
+                                <rect key="frame" x="951" y="65" width="57" height="59"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="3D3-eX-Vmj"/>
@@ -45,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-Zt-1wx" userLabel="Drive">
-                                <rect key="frame" x="16" y="213" width="175" height="175"/>
+                                <rect key="frame" x="16" y="297" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="9PX-TZ-GpE"/>
@@ -62,7 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-De-cON" userLabel="Magnet">
-                                <rect key="frame" x="409" y="213" width="175" height="175"/>
+                                <rect key="frame" x="833" y="297" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="5ab-0M-gpg"/>
@@ -78,7 +71,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gos-AY-U0y" userLabel="Connect BLE">
-                                <rect key="frame" x="275" y="534" width="50" height="50"/>
+                                <rect key="frame" x="487" y="702" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="MNL-u8-eUC"/>
@@ -93,39 +86,63 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfc-Ql-gwX" userLabel="Right Bar Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="300" y="90" width="190" height="25"/>
+                                <rect key="frame" x="613" y="344" width="190" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="Mm6-X6-0s9"/>
+                                    <constraint firstAttribute="height" constant="80" id="SOr-d0-qe5"/>
                                     <constraint firstAttribute="height" constant="25" id="bs5-y6-vbV"/>
                                     <constraint firstAttribute="width" constant="190" id="lYM-08-SUn"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bs5-y6-vbV"/>
+                                        <exclude reference="lYM-08-SUn"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFo-zz-rIG" userLabel="Left Bar Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="110" y="90" width="190" height="25"/>
+                                <rect key="frame" x="220" y="344" width="190" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="IAg-4y-VHQ"/>
                                     <constraint firstAttribute="height" constant="25" id="SW5-HC-Q58"/>
+                                    <constraint firstAttribute="width" constant="190" id="X0s-yy-2rO"/>
                                     <constraint firstAttribute="width" constant="190" id="b6E-vK-fvC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SW5-HC-Q58"/>
+                                        <exclude reference="b6E-vK-fvC"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-XE-81q" userLabel="Speed Meter View" customClass="MeterView">
+                                <rect key="frame" x="393" y="280" width="238" height="208"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="8wA-vg-HQ7"/>
+                                    <constraint firstAttribute="width" constant="238" id="ggQ-06-LbX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ein-ia-wKb" userLabel="Acc Left Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="452" y="14" width="35" height="123"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="c52-dQ-Wv3"/>
+                                    <constraint firstAttribute="height" constant="123" id="gyF-vA-xgJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlr-00-chg" userLabel="Acc Center Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="288" y="14" width="25" height="62"/>
+                                <rect key="frame" x="495" y="14" width="35" height="123"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="9pc-Os-UIW"/>
-                                    <constraint firstAttribute="width" constant="25" id="jKb-yl-gaU"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QO-eR-CUs" userLabel="Acc Right Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="321" y="14" width="35" height="62"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="S2o-Yf-TNi"/>
-                                    <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
+                                    <constraint firstAttribute="height" constant="123" id="9pc-Os-UIW"/>
+                                    <constraint firstAttribute="width" constant="35" id="jKb-yl-gaU"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-bp-qD4">
-                                <rect key="frame" x="0.0" y="495" width="600" height="31"/>
+                                <rect key="frame" x="0.0" y="663" width="1024" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="NUM-gC-sdQ"/>
                                 </constraints>
@@ -133,12 +150,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ein-ia-wKb" userLabel="Acc Left Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="245" y="14" width="35" height="62"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QO-eR-CUs" userLabel="Acc Right Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="538" y="14" width="35" height="123"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="c52-dQ-Wv3"/>
-                                    <constraint firstAttribute="height" constant="62" id="gyF-vA-xgJ"/>
+                                    <constraint firstAttribute="height" constant="123" id="S2o-Yf-TNi"/>
+                                    <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -146,20 +163,19 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CCd-bp-qD4" secondAttribute="trailing" id="4lJ-P3-AQr"/>
                             <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="6Ak-kJ-w6B"/>
-                            <constraint firstAttribute="centerX" secondItem="0QO-eR-CUs" secondAttribute="centerX" constant="-38.5" id="7Iq-6Y-8cC"/>
+                            <constraint firstAttribute="centerX" secondItem="0QO-eR-CUs" secondAttribute="centerX" constant="-43.5" id="7Iq-6Y-8cC"/>
+                            <constraint firstAttribute="centerY" secondItem="rFo-zz-rIG" secondAttribute="centerY" constant="0.5" id="8wZ-9H-Iy3"/>
                             <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="8yo-Jg-Mjb"/>
                             <constraint firstItem="zlr-00-chg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="9FV-YH-Ol2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
                             <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Bfg-Ye-E8p"/>
-                            <constraint firstItem="Zfc-Ql-gwX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="I63-Co-UbC"/>
+                            <constraint firstAttribute="centerY" secondItem="Zfc-Ql-gwX" secondAttribute="centerY" id="Cc4-8E-fjJ"/>
                             <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="JkO-AS-qbk"/>
-                            <constraint firstItem="rFo-zz-rIG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="KDJ-Xt-jpf"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
                             <constraint firstAttribute="centerX" secondItem="SjC-XE-81q" secondAttribute="centerX" id="M2q-7g-m3P"/>
-                            <constraint firstAttribute="centerX" secondItem="Ein-ia-wKb" secondAttribute="centerX" constant="37.5" id="Odr-t9-qx1"/>
-                            <constraint firstAttribute="centerX" secondItem="Zfc-Ql-gwX" secondAttribute="centerX" constant="-95" id="Phw-JZ-yNQ"/>
+                            <constraint firstAttribute="centerX" secondItem="Ein-ia-wKb" secondAttribute="centerX" constant="42.5" id="Odr-t9-qx1"/>
                             <constraint firstItem="Ein-ia-wKb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="Pw3-l6-za5"/>
-                            <constraint firstAttribute="centerX" secondItem="rFo-zz-rIG" secondAttribute="centerX" constant="95" id="We8-aa-AXk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zfc-Ql-gwX" secondAttribute="trailing" constant="205" id="c16-hc-kz7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="74" id="c7Z-WA-518"/>
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="dJV-m0-yuP"/>
                             <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="hMf-ra-j60"/>
@@ -171,13 +187,17 @@
                             <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
                             <constraint firstItem="0QO-eR-CUs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="sCw-wh-k08"/>
+                            <constraint firstItem="rFo-zz-rIG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="204" id="twE-AA-9uA"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="accCenterGauge" destination="zlr-00-chg" id="FtU-fa-UoN"/>
+                        <outlet property="accLeftGauge" destination="Ein-ia-wKb" id="qj6-9w-YMT"/>
                         <outlet property="accRightGauge" destination="0QO-eR-CUs" id="COO-ow-py5"/>
                         <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
@@ -192,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="98"/>
+            <point key="canvasLocation" x="-56" y="2"/>
         </scene>
     </scenes>
     <resources>
