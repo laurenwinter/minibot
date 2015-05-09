@@ -108,6 +108,22 @@
                                     <constraint firstAttribute="width" constant="190" id="b6E-vK-fvC"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlr-00-chg" userLabel="Acc Center Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="288" y="14" width="25" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="9pc-Os-UIW"/>
+                                    <constraint firstAttribute="width" constant="25" id="jKb-yl-gaU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QO-eR-CUs" userLabel="Acc Right Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="321" y="14" width="35" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="S2o-Yf-TNi"/>
+                                    <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-bp-qD4">
                                 <rect key="frame" x="0.0" y="495" width="600" height="31"/>
                                 <constraints>
@@ -117,23 +133,32 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ein-ia-wKb" userLabel="Acc Left Gauge" customClass="F3BarGauge">
+                                <rect key="frame" x="245" y="14" width="35" height="62"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="c52-dQ-Wv3"/>
+                                    <constraint firstAttribute="height" constant="62" id="gyF-vA-xgJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CCd-bp-qD4" secondAttribute="trailing" id="4lJ-P3-AQr"/>
                             <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="6Ak-kJ-w6B"/>
-                            <constraint firstItem="Zfc-Ql-gwX" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="24" id="773-zm-ktj"/>
+                            <constraint firstAttribute="centerX" secondItem="0QO-eR-CUs" secondAttribute="centerX" constant="-38.5" id="7Iq-6Y-8cC"/>
                             <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="8yo-Jg-Mjb"/>
+                            <constraint firstItem="zlr-00-chg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="9FV-YH-Ol2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
                             <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Bfg-Ye-E8p"/>
-                            <constraint firstItem="rFo-zz-rIG" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="24" id="HjQ-ML-nlf"/>
                             <constraint firstItem="Zfc-Ql-gwX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="I63-Co-UbC"/>
                             <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="JkO-AS-qbk"/>
                             <constraint firstItem="rFo-zz-rIG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="KDJ-Xt-jpf"/>
-                            <constraint firstItem="CCd-bp-qD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="KPf-Dj-9dB"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
                             <constraint firstAttribute="centerX" secondItem="SjC-XE-81q" secondAttribute="centerX" id="M2q-7g-m3P"/>
+                            <constraint firstAttribute="centerX" secondItem="Ein-ia-wKb" secondAttribute="centerX" constant="37.5" id="Odr-t9-qx1"/>
                             <constraint firstAttribute="centerX" secondItem="Zfc-Ql-gwX" secondAttribute="centerX" constant="-95" id="Phw-JZ-yNQ"/>
+                            <constraint firstItem="Ein-ia-wKb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="Pw3-l6-za5"/>
                             <constraint firstAttribute="centerX" secondItem="rFo-zz-rIG" secondAttribute="centerX" constant="95" id="We8-aa-AXk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="74" id="c7Z-WA-518"/>
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="dJV-m0-yuP"/>
@@ -141,22 +166,19 @@
                             <constraint firstAttribute="centerX" secondItem="gos-AY-U0y" secondAttribute="centerX" id="jH9-zE-hqa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gos-AY-U0y" secondAttribute="bottom" constant="16" id="kJz-Nh-PW0"/>
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="-0.5" id="knX-Pt-RBm"/>
+                            <constraint firstAttribute="centerX" secondItem="zlr-00-chg" secondAttribute="centerX" id="mIt-Ha-lkk"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nmP-ux-BMd"/>
                             <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
+                            <constraint firstItem="0QO-eR-CUs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="sCw-wh-k08"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="HjQ-ML-nlf"/>
-                                <exclude reference="773-zm-ktj"/>
-                                <exclude reference="KPf-Dj-9dB"/>
-                            </mask>
-                        </variation>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="accCenterGauge" destination="zlr-00-chg" id="FtU-fa-UoN"/>
+                        <outlet property="accRightGauge" destination="0QO-eR-CUs" id="COO-ow-py5"/>
                         <outlet property="bleConnectButton" destination="gos-AY-U0y" id="WT4-ea-TFr"/>
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
                         <outlet property="hudImageBackground" destination="gpg-ai-pwN" id="lYh-pN-lqG"/>
@@ -170,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="94"/>
+            <point key="canvasLocation" x="162" y="98"/>
         </scene>
     </scenes>
     <resources>

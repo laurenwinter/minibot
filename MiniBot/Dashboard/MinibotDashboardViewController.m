@@ -53,6 +53,9 @@
     __weak IBOutlet F3BarGauge *rightBarGauge;
     __weak IBOutlet F3BarGauge *leftBarGauge;
     
+    __weak IBOutlet F3BarGauge *accLeftGauge;
+    __weak IBOutlet F3BarGauge *accCenterGauge;
+    __weak IBOutlet F3BarGauge *accRightGauge;
     
     __weak IBOutlet UIImageView *hudImageBackground;
 }
@@ -146,7 +149,7 @@ int maxSpeedChange = 20;
 }
 
 - (void) handleMessage:(NSString *)message {
-    NSLog(@"Valid message from robot: %@",message);
+    // NSLog(@"Valid message from robot: %@",message);
 
     // Parse the x, y and z accel data
     NSRange range = NSMakeRange (0, 4);
@@ -164,7 +167,11 @@ int maxSpeedChange = 20;
     NSNumber *intZValue = [NSNumber numberWithInt:[substring intValue]];
     //[self setAccelSprite:damageZSprite value:intZValue.intValue];
     
-    statusLabel.text = [NSString stringWithFormat:@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue];
+    accLeftGauge.value = intXValue.floatValue;
+    accCenterGauge.value = intYValue.floatValue;
+    accRightGauge.value = intZValue.floatValue;
+    
+    statusLabel.text = @""; //[NSString stringWithFormat:@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue];
     //[self setDamage:intXValue.intValue accY:intYValue.intValue accZ:intZValue.intValue];
 }
 
