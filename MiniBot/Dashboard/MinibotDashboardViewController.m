@@ -177,9 +177,9 @@ int maxSpeedChange = 20;
     NSNumber *intZValue = [NSNumber numberWithInt:[substring intValue]];
     //[self setAccelSprite:damageZSprite value:intZValue.intValue];
     
-    accLeftGauge.value = intXValue.floatValue;
-    accCenterGauge.value = intZValue.floatValue;
-    accRightGauge.value = intYValue.floatValue;
+    accLeftGauge.value = intXValue.floatValue/100.0;
+    accCenterGauge.value = intZValue.floatValue/100.0;
+    accRightGauge.value = intYValue.floatValue/100.0;
     
     statusLabel.text = @""; //[NSString stringWithFormat:@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue];
     //[self setDamage:intXValue.intValue accY:intYValue.intValue accZ:intZValue.intValue];
@@ -303,6 +303,10 @@ int maxSpeedChange = 20;
     
     if (! rfduino.outOfRange) {
         [rfduinoManager connectRFduino:rfduino];
+        
+        [accLeftGauge resetPeak];
+        [accCenterGauge resetPeak];
+        [accRightGauge resetPeak];
     }
 }
 
