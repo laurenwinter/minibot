@@ -204,9 +204,23 @@ int maxSpeedChange = 20;
 //    float yaw = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.yaw)));
     
     float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
-    steerVal = ((pitch/60.0f) * -100);
+    
+    // Linear steering
+    //steerVal = ((pitch/60.0f) * -100);
+    
+    // Exponential steering
+    BOOL positive = (pitch > 0);
+    int exp = ceil(fabsf(pitch)/10);
+    steerVal = pow(3, exp);
+    if (positive) {
+        steerVal *= -1;
+    }
+
+    //NSLog(@"Pitch %f, exp = %d, Steer %d",pitch, exp, steerVal);
+
     steerVal = steerVal < zeroSteerRange && steerVal > 0 ? 0 : steerVal > -zeroSteerRange && steerVal < 0 ? 0 : steerVal;
     steerVal = steerVal > 100 ? 100 : (steerVal < -100 ? -100 : steerVal);
+    
     
     if (steerVal < 0) {
         leftBarGauge.value = 0;
@@ -230,6 +244,15 @@ int maxSpeedChange = 20;
     } else {
         lastSpeedValue = 0;
     }
+    
+    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
+    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
+    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
+    //NSLog(@"%@", controlString);
+    [self.rfduino send:dataString];
+    
+    
+    
     
     //weapon = weaponValue;
 
@@ -277,14 +300,6 @@ int maxSpeedChange = 20;
 //    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
 //    [self.rfduino send:dataAll];
     
-    
-    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
-    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
-    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
-    //NSLog(@"%@", controlString);
-    [self.rfduino send:dataString];
-    
-    //[self parseData];
 }
 
 - (IBAction)disconnect:(id)sender
