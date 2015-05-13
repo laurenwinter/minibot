@@ -42,6 +42,8 @@
     NSString *rxMessage;
     int messagesReceived;
     
+    BOOL appInForeground;
+    
     __weak IBOutlet UIButton *bleConnectButton;
     __weak IBOutlet UILabel *statusLabel;
     __weak IBOutlet UIButton *driveButton;
@@ -104,6 +106,17 @@ int maxSpeedChange = 20;
     
     driveActive = NO;
     
+    appInForeground = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillTerminate:)
+                                                 name:UIApplicationWillTerminateNotification object:nil];
+    
     // Speed Meter View
     speedometerView.textLabel.text = @"m/sec";
     speedometerView.textLabel.font = [UIFont fontWithName:@"AvenirNext" size:18.0];
@@ -143,7 +156,31 @@ int maxSpeedChange = 20;
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    timedThread = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(timeMotionTransmit) userInfo:nil repeats:YES];
+    
+    // Was 0.25, trying 0.1 sec
+    timedThread = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeMotionTransmit) userInfo:nil repeats:YES];
+}
+
+
+-(void)appDidBecomeActive:(NSNotification*)note
+{
+    appInForeground = YES;
+}
+
+-(void)appWillResignActive:(NSNotification*)note
+{
+    appInForeground = NO;
+    driveActive = NO;
+    magnetActive = NO;
+    armActive = NO;
+}
+
+-(void)appWillTerminate:(NSNotification*)note
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
+    
 }
 
 - (void)didReceive:(NSData *)data
@@ -188,6 +225,9 @@ int maxSpeedChange = 20;
 -(void) timeMotionTransmit {
     // timed update method that gets device motion and transmits it to the toy
 
+    if (!appInForeground)
+        return;
+    
     if (!self.rfduino)
         return;
     
@@ -206,15 +246,15 @@ int maxSpeedChange = 20;
     float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
     
     // Linear steering
-    //steerVal = ((pitch/60.0f) * -100);
+    steerVal = ((pitch/60.0f) * -100);
     
     // Exponential steering
-    BOOL positive = (pitch > 0);
-    int exp = ceil(fabsf(pitch)/10);
-    steerVal = pow(3, exp);
-    if (positive) {
-        steerVal *= -1;
-    }
+//    BOOL positive = (pitch > 0);
+//    int exp = ceil(fabsf(pitch)/10);
+//    steerVal = pow(2, exp);
+//    if (positive) {
+//        steerVal *= -1;
+//    }
 
     //NSLog(@"Pitch %f, exp = %d, Steer %d",pitch, exp, steerVal);
 
@@ -245,11 +285,13 @@ int maxSpeedChange = 20;
         lastSpeedValue = 0;
     }
     
-    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
-    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
-    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
-    //NSLog(@"%@", controlString);
-    [self.rfduino send:dataString];
+    [self sendToBotSteer:steer speed:speed weapon:weapon magnet:magnet];
+    
+//    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
+//    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
+//    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
+//    //NSLog(@"%@", controlString);
+//    [self.rfduino send:dataString];
     
     
     
@@ -300,6 +342,16 @@ int maxSpeedChange = 20;
 //    NSData* dataAll = [NSData dataWithBytes:(void*)&bytesAll length:3];
 //    [self.rfduino send:dataAll];
     
+}
+
+- (void)sendToBotSteer:(int)steer speed:(int)speed weapon:(int)weapon magnet:(int)magnet
+{
+    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
+    NSData *dataString = [controlString dataUsingEncoding:NSASCIIStringEncoding];
+    //NSLog(@"%@, %@, length = %lu", controlString, dataString, (unsigned long)dataString.length);
+    //NSLog(@"%@", controlString);
+    [self.rfduino send:dataString];
+
 }
 
 - (IBAction)disconnect:(id)sender
