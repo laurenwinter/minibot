@@ -14,7 +14,7 @@
 @class RFduinoManager;
 @class RFduino;
 
-@interface MinibotDashboardViewController : UIViewController <RFduinoManagerDelegate, RFduinoDelegate>
+@interface MinibotDashboardViewController : UIViewController <RFduinoManagerDelegate, RFduinoDelegate, UIGestureRecognizerDelegate>
 {
     RFduinoManager *rfduinoManager;
 }

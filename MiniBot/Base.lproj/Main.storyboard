@@ -158,6 +158,16 @@
                                     <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da2-7C-jke">
+                                <rect key="frame" x="0.0" y="0.0" width="433" height="272"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-JC-anU">
+                                <rect key="frame" x="595" y="0.0" width="429" height="272"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -203,8 +213,10 @@
                         <outlet property="driveButton" destination="R1A-Zt-1wx" id="NiZ-vf-nxt"/>
                         <outlet property="hudImageBackground" destination="gpg-ai-pwN" id="lYh-pN-lqG"/>
                         <outlet property="leftBarGauge" destination="rFo-zz-rIG" id="Ywy-1f-0fB"/>
+                        <outlet property="leftPanGestureView" destination="da2-7C-jke" id="pfo-hf-SCe"/>
                         <outlet property="magnetButton" destination="eiO-De-cON" id="Tgv-9b-lPA"/>
                         <outlet property="rightBarGauge" destination="Zfc-Ql-gwX" id="Xle-cZ-3KU"/>
+                        <outlet property="rightPanGestureView" destination="GV1-JC-anU" id="BWZ-Yb-Ece"/>
                         <outlet property="speedometerView" destination="SjC-XE-81q" id="aK8-pb-6nT"/>
                         <outlet property="statusLabel" destination="CCd-bp-qD4" id="95X-uD-jgl"/>
                         <outlet property="weaponButton" destination="lkU-K5-Lta" id="ngU-WC-zTC"/>
