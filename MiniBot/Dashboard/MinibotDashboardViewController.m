@@ -446,8 +446,11 @@ int maxSpeedChange = 20;
             // CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
             // NSLog(@"right pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
             
-            if (fabsf(velocity.x) > 100)
+            if (fabs(velocity.x) < 100 && abs(lastSteerValue) > 2) {
+                lastSteerValue = lastSteerValue > 0 ? 35 : -35;
+            } else {
                 lastSteerValue = -0.1 * velocity.x;
+            }
         }
             break;
         case UIGestureRecognizerStateEnded: {
@@ -472,8 +475,11 @@ int maxSpeedChange = 20;
             // CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
             //NSLog(@"left pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
             
-            if (fabsf(velocity.x) > 100)
+            if (fabs(velocity.x) < 100 && abs(lastSpeedValue) > 2) {
+                lastSpeedValue = lastSpeedValue > 0 ? 45 : - 45;
+            } else {
                 lastSpeedValue = -0.1 * velocity.x;
+            }
             
             //            int steerVal = -0.1 * velocity.x;
             //            steerVal = steerVal < zeroSteerRange && steerVal > 0 ? 0 : steerVal > -zeroSteerRange && steerVal < 0 ? 0 : steerVal;
