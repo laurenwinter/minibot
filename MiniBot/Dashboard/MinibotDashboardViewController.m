@@ -320,6 +320,8 @@ int maxSpeedChange = 20;
         speed = lastSpeedValue;
     }
     
+    NSLog(@"Weapon Val = %d", weapon);
+    
     [self sendToBotSteer:steer speed:speed weapon:weapon magnet:magnet];
     
 //    NSString *controlString = [NSString stringWithFormat:@"%4d%4d%2d%2d", steer, speed, weapon, magnet];
@@ -430,7 +432,12 @@ int maxSpeedChange = 20;
     hudImageBackground.image = [UIImage imageNamed:@"hud-green.png"];
 }
 
-- (IBAction)weaponButtonAction:(id)sender {
+- (IBAction)weaponButtonAction:(UIButton *)sender {
+    armActive = NO;
+}
+
+- (IBAction)armButtonDownAction:(UIButton *)sender {
+    armActive = YES;
 }
 
 #pragma mark - Gesture recognizers

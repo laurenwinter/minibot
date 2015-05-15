@@ -22,21 +22,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
-                                <rect key="frame" x="951" y="65" width="57" height="59"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="3D3-eX-Vmj"/>
-                                    <constraint firstAttribute="width" constant="57" id="bIK-cK-gTm"/>
-                                </constraints>
-                                <state key="normal" title="Weapon" image="silver3Dbutton.png">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="weaponButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-s2-awZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-Zt-1wx" userLabel="Drive">
                                 <rect key="frame" x="16" y="297" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -158,16 +143,32 @@
                                     <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da2-7C-jke">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da2-7C-jke" userLabel="Left Touch View">
                                 <rect key="frame" x="0.0" y="0.0" width="433" height="272"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-JC-anU">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-JC-anU" userLabel="Right Touch View">
                                 <rect key="frame" x="595" y="0.0" width="429" height="272"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-K5-Lta" userLabel="Arm">
+                                <rect key="frame" x="847" y="576" width="57" height="59"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="3D3-eX-Vmj"/>
+                                    <constraint firstAttribute="width" constant="57" id="bIK-cK-gTm"/>
+                                </constraints>
+                                <state key="normal" title="Weapon" image="silver3Dbutton.png">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="armButtonDownAction:" destination="BYZ-38-t0r" eventType="touchDown" id="bd0-MU-tWl"/>
+                                    <action selector="weaponButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-s2-awZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -187,8 +188,8 @@
                             <constraint firstItem="Ein-ia-wKb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="Pw3-l6-za5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zfc-Ql-gwX" secondAttribute="trailing" constant="205" id="c16-hc-kz7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="74" id="c7Z-WA-518"/>
-                            <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="dJV-m0-yuP"/>
-                            <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="16" id="hMf-ra-j60"/>
+                            <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="556" id="dJV-m0-yuP"/>
+                            <constraint firstAttribute="trailing" secondItem="lkU-K5-Lta" secondAttribute="trailing" constant="120" id="hMf-ra-j60"/>
                             <constraint firstAttribute="centerX" secondItem="gos-AY-U0y" secondAttribute="centerX" id="jH9-zE-hqa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gos-AY-U0y" secondAttribute="bottom" constant="16" id="kJz-Nh-PW0"/>
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="-0.5" id="knX-Pt-RBm"/>
