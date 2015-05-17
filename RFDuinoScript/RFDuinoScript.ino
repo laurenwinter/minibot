@@ -69,16 +69,20 @@ void loop() {
 
     String controlString = receiveString.substring(0, 8);
 
-    // last 4 char are arm and magnet, 2 each
+    // last 4 char are arm and magnet, 2 char each
+
+    // Char 8&9 are the arm value/10, add a space and a '0' to make the correct arm protocol value
     String armString = receiveString.substring(8, 10);
     controlString += ' ' + armString + '0';
 
+    // Char 10&11 are the magnet value
     String magnetString = receiveString.substring(10, 12);
     int magValue = 0;
     if (magnetString == "10") {
       //Serial.println("mag on:" + magnetString);
       magValue = 180;
     }
+    // Write the mag value to the rfduino servo channel 1
     s1.write(magValue);
     
     // Create the 26 char ARM protocol string and send it

@@ -256,7 +256,8 @@ int maxSpeedChange = 20;
     int speedVal = 0;
     int steer = 0;
     int steerVal = 0;
-    int weapon = armActive ? 25 : 80; // 800 off, 250 on
+    int weapon = armActive ? 5 : 80; // 80 LEFT, 5 RIGHT
+                                      //weapon = weapon + 25;
     int magnet = magnetActive ? 10 : 0; // 0 off, 10 on
 
     CMDeviceMotion *currentDeviceMotion = motionManager.deviceMotion;
@@ -320,7 +321,7 @@ int maxSpeedChange = 20;
         speed = lastSpeedValue;
     }
     
-    NSLog(@"Weapon Val = %d", weapon);
+    //NSLog(@"Weapon Val = %d", weapon);
     
     [self sendToBotSteer:steer speed:speed weapon:weapon magnet:magnet];
     
@@ -423,21 +424,23 @@ int maxSpeedChange = 20;
 }
 
 - (IBAction)magnetButtonDownAction:(id)sender {
-    magnetActive = YES;
+    //magnetActive = YES;
+    armActive = NO;
     hudImageBackground.image = [UIImage imageNamed:@"hud-fuchsia.png"];
 }
 
 - (IBAction)magnetButtonAction:(id)sender {
-    magnetActive = NO;
+    //magnetActive = NO;
+    armActive = YES;
     hudImageBackground.image = [UIImage imageNamed:@"hud-green.png"];
 }
 
 - (IBAction)weaponButtonAction:(UIButton *)sender {
-    armActive = NO;
+    //armActive = NO;
 }
 
 - (IBAction)armButtonDownAction:(UIButton *)sender {
-    armActive = YES;
+    //armActive = YES;
 }
 
 #pragma mark - Gesture recognizers
@@ -445,7 +448,7 @@ int maxSpeedChange = 20;
 {
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan: {
-            
+            lastSteerValue = 0;
         }
             break;
         case UIGestureRecognizerStateChanged: {
@@ -474,7 +477,7 @@ int maxSpeedChange = 20;
 {
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan: {
-            
+            lastSpeedValue = 0;
         }
             break;
         case UIGestureRecognizerStateChanged: {
