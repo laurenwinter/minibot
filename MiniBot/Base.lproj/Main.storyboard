@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-Zt-1wx" userLabel="Drive">
-                                <rect key="frame" x="16" y="297" width="175" height="175"/>
+                                <rect key="frame" x="12" y="296" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="9PX-TZ-GpE"/>
@@ -33,12 +33,15 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="driveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KHW-Jw-ImU"/>
-                                    <action selector="driveButtonAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="pUU-zf-7Ww"/>
-                                    <action selector="driveButtonDownAction:" destination="BYZ-38-t0r" eventType="touchDown" id="P7h-0I-K2M"/>
-                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da2-7C-jke" userLabel="Left Touch View">
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="768"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="295" id="9sS-Zt-uvK"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-De-cON" userLabel="Magnet">
                                 <rect key="frame" x="833" y="297" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -111,18 +114,18 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ein-ia-wKb" userLabel="Acc Left Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="452" y="14" width="35" height="123"/>
+                                <rect key="frame" x="452" y="41" width="35" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="c52-dQ-Wv3"/>
-                                    <constraint firstAttribute="height" constant="123" id="gyF-vA-xgJ"/>
+                                    <constraint firstAttribute="height" constant="186" id="gyF-vA-xgJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlr-00-chg" userLabel="Acc Center Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="495" y="14" width="35" height="123"/>
+                                <rect key="frame" x="495" y="14" width="35" height="213"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="123" id="9pc-Os-UIW"/>
+                                    <constraint firstAttribute="height" constant="213" id="9pc-Os-UIW"/>
                                     <constraint firstAttribute="width" constant="35" id="jKb-yl-gaU"/>
                                 </constraints>
                             </view>
@@ -136,17 +139,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QO-eR-CUs" userLabel="Acc Right Gauge" customClass="F3BarGauge">
-                                <rect key="frame" x="538" y="14" width="35" height="123"/>
+                                <rect key="frame" x="538" y="41" width="35" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="123" id="S2o-Yf-TNi"/>
+                                    <constraint firstAttribute="height" constant="186" id="S2o-Yf-TNi"/>
                                     <constraint firstAttribute="width" constant="35" id="qzU-0h-NwX"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="da2-7C-jke" userLabel="Left Touch View">
-                                <rect key="frame" x="0.0" y="0.0" width="433" height="272"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GV1-JC-anU" userLabel="Right Touch View">
                                 <rect key="frame" x="595" y="0.0" width="429" height="272"/>
@@ -173,19 +171,21 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CCd-bp-qD4" secondAttribute="trailing" id="4lJ-P3-AQr"/>
-                            <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" id="6Ak-kJ-w6B"/>
                             <constraint firstAttribute="centerX" secondItem="0QO-eR-CUs" secondAttribute="centerX" constant="-43.5" id="7Iq-6Y-8cC"/>
                             <constraint firstAttribute="centerY" secondItem="rFo-zz-rIG" secondAttribute="centerY" constant="0.5" id="8wZ-9H-Iy3"/>
                             <constraint firstAttribute="trailing" secondItem="gpg-ai-pwN" secondAttribute="trailing" id="8yo-Jg-Mjb"/>
                             <constraint firstItem="zlr-00-chg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="9FV-YH-Ol2"/>
+                            <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="9Iy-ne-Qs2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gpg-ai-pwN" secondAttribute="bottom" id="9ci-yP-lyA"/>
-                            <constraint firstItem="R1A-Zt-1wx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Bfg-Ye-E8p"/>
                             <constraint firstAttribute="centerY" secondItem="Zfc-Ql-gwX" secondAttribute="centerY" id="Cc4-8E-fjJ"/>
                             <constraint firstAttribute="trailing" secondItem="eiO-De-cON" secondAttribute="trailing" constant="16" id="JkO-AS-qbk"/>
+                            <constraint firstAttribute="centerY" secondItem="R1A-Zt-1wx" secondAttribute="centerY" constant="0.5" id="KcY-wC-IfB"/>
                             <constraint firstItem="CCd-bp-qD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lra-73-n1M"/>
                             <constraint firstAttribute="centerX" secondItem="SjC-XE-81q" secondAttribute="centerX" id="M2q-7g-m3P"/>
                             <constraint firstAttribute="centerX" secondItem="Ein-ia-wKb" secondAttribute="centerX" constant="42.5" id="Odr-t9-qx1"/>
-                            <constraint firstItem="Ein-ia-wKb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="Pw3-l6-za5"/>
+                            <constraint firstItem="Ein-ia-wKb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="Pw3-l6-za5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="da2-7C-jke" secondAttribute="bottom" id="RGu-Mk-Af1"/>
+                            <constraint firstItem="da2-7C-jke" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aKZ-sg-IRO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zfc-Ql-gwX" secondAttribute="trailing" constant="205" id="c16-hc-kz7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CCd-bp-qD4" secondAttribute="bottom" constant="74" id="c7Z-WA-518"/>
                             <constraint firstItem="lkU-K5-Lta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="556" id="dJV-m0-yuP"/>
@@ -195,9 +195,10 @@
                             <constraint firstAttribute="centerY" secondItem="eiO-De-cON" secondAttribute="centerY" constant="-0.5" id="knX-Pt-RBm"/>
                             <constraint firstAttribute="centerX" secondItem="zlr-00-chg" secondAttribute="centerX" id="mIt-Ha-lkk"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nmP-ux-BMd"/>
+                            <constraint firstItem="da2-7C-jke" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oWZ-le-VG6"/>
                             <constraint firstAttribute="centerY" secondItem="SjC-XE-81q" secondAttribute="centerY" id="omj-dE-Gxt"/>
                             <constraint firstItem="gpg-ai-pwN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="s0o-l7-uGS"/>
-                            <constraint firstItem="0QO-eR-CUs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-6" id="sCw-wh-k08"/>
+                            <constraint firstItem="0QO-eR-CUs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="sCw-wh-k08"/>
                             <constraint firstItem="rFo-zz-rIG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="204" id="twE-AA-9uA"/>
                         </constraints>
                     </view>

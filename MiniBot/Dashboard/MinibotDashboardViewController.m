@@ -235,10 +235,12 @@ int maxSpeedChange = 20;
     NSNumber *intZValue = [NSNumber numberWithInt:[substring intValue]];
     //[self setAccelSprite:damageZSprite value:intZValue.intValue];
     
-    accLeftGauge.value = intXValue.floatValue/100.0;
+    accLeftGauge.value = intXValue.floatValue/250.0;
     accCenterGauge.value = intZValue.floatValue/100.0;
-    accRightGauge.value = intYValue.floatValue/100.0;
+    accRightGauge.value = intYValue.floatValue/250.0;
     
+    //NSLog(@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue);
+
     statusLabel.text = @""; //[NSString stringWithFormat:@"x:%d y:%d z:%d", intXValue.intValue, intYValue.intValue, intZValue.intValue];
     //[self setDamage:intXValue.intValue accY:intYValue.intValue accZ:intZValue.intValue];
 }
@@ -267,14 +269,14 @@ int maxSpeedChange = 20;
     
     float pitch = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.pitch)));
     
-    if (lastSteerValue) {
+//    if (lastSteerValue) {
         // Steer with UI control
         steerVal = lastSteerValue;
-    }
-    else {
-        // Linear steering
-        steerVal = ((pitch/60.0f) * -100);
-    }
+//    }
+//    else {
+//        // Linear steering
+//        steerVal = ((pitch/60.0f) * -100);
+//    }
     
     // Exponential steering
 //    BOOL positive = (pitch > 0);
@@ -297,29 +299,30 @@ int maxSpeedChange = 20;
         leftBarGauge.value = abs(steerVal)/90.0;
         rightBarGauge.value = 0;
     }
-    
-    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
-    if (lastSpeedValue) {
+//    
+//    float roll = roundf((float)(CC_RADIANS_TO_DEGREES(currentAttitude.roll)));
+//    if (lastSpeedValue) {
         // Speed with UI control
         speedVal = lastSpeedValue;
-    } else {
-        speedVal = (roll/30.0f) * maxSpeed;
-    }
+//    } else {
+//        speedVal = (roll/30.0f) * maxSpeed;
+//    }
     
     speedVal = speedVal < zeroRange && speedVal > 0 ? 0 : speedVal > -zeroRange && speedVal < 0 ? 0 : speedVal;
     speedVal = speedVal > maxSpeed ? maxSpeed : (speedVal < -maxSpeed ? -maxSpeed : speedVal);
 
     speedometerView.value = abs(speedVal);
 
-    if (driveActive) {
-        steer = steerVal;
-        speed = speedVal;
-        //lastSpeedValue = speed;
-    } else {
+//    if (driveActive) {
+//        steer = steerVal;
+//        speed = speedVal;
+//        //lastSpeedValue = speed;
+//    } else {
         //lastSpeedValue = 0;
         steer = lastSteerValue;
         speed = lastSpeedValue;
-    }
+        //NSLog(@"lastSpeed fwd = %d", lastSpeedValue);
+//}
     
     //NSLog(@"Weapon Val = %d", weapon);
     
@@ -406,13 +409,13 @@ int maxSpeedChange = 20;
     
     RFduino *rfduino = [[rfduinoManager rfduinos] objectAtIndex:0];
     
-    if (! rfduino.outOfRange) {
+//    if (! rfduino.outOfRange) {
         [rfduinoManager connectRFduino:rfduino];
         
         [accLeftGauge resetPeak];
         [accCenterGauge resetPeak];
         [accRightGauge resetPeak];
-    }
+//    }
 }
 
 - (IBAction)driveButtonDownAction:(id)sender {
@@ -457,9 +460,9 @@ int maxSpeedChange = 20;
             // NSLog(@"right pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
             
             if (fabs(velocity.x) < 100 && abs(lastSteerValue) > 2) {
-                lastSteerValue = lastSteerValue > 0 ? 35 : -35;
+                lastSteerValue = lastSteerValue > 0 ? 65 : -65;
             } else {
-                lastSteerValue = -0.1 * velocity.x;
+                lastSteerValue = -0.15 * velocity.x;
             }
         }
             break;
@@ -481,23 +484,21 @@ int maxSpeedChange = 20;
         }
             break;
         case UIGestureRecognizerStateChanged: {
-            CGPoint velocity = [recognizer velocityInView:leftPanGestureView];
-            // CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
-            //NSLog(@"left pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
+            CGPoint position = [recognizer locationInView:leftPanGestureView];
+            // NSLog(@"pos = %f", position.y);
+
+            float center = leftPanGestureView.frame.size.height/2;
             
-            if (fabs(velocity.x) < 100 && abs(lastSpeedValue) > 2) {
-                lastSpeedValue = lastSpeedValue > 0 ? 45 : - 45;
+            if (position.y < center) {
+                // Forward
+                lastSpeedValue = (center - position.y) * (maxSpeed/center) * 1.2;
+                // NSLog(@"lastSpeed fwd = %d", lastSpeedValue);
+
             } else {
-                lastSpeedValue = -0.1 * velocity.x;
+                // Reverse
+                lastSpeedValue = -1.0 * (position.y - center) * (maxSpeed/center) * 1.2;
+                //NSLog(@"lastSpeed rvs = %d", lastSpeedValue);
             }
-            
-            //            int steerVal = -0.1 * velocity.x;
-            //            steerVal = steerVal < zeroSteerRange && steerVal > 0 ? 0 : steerVal > -zeroSteerRange && steerVal < 0 ? 0 : steerVal;
-            //            steerVal = steerVal > 100 ? 100 : (steerVal < -100 ? -100 : steerVal);
-            //
-            //            [self sendToBotSteer:steerVal speed:0 weapon:0 magnet:0];
-            
-            
         }
             break;
         case UIGestureRecognizerStateEnded: {
@@ -536,6 +537,69 @@ int maxSpeedChange = 20;
     }
 }
 
+//- (void)panSpeedAction:(UIPanGestureRecognizer *)recognizer
+//{
+//    switch (recognizer.state) {
+//        case UIGestureRecognizerStateBegan: {
+//            lastSpeedValue = 0;
+//        }
+//            break;
+//        case UIGestureRecognizerStateChanged: {
+//            CGPoint velocity = [recognizer velocityInView:leftPanGestureView];
+//            // CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+//            //NSLog(@"left pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
+//            
+//            if (fabs(velocity.x) < 100 && abs(lastSpeedValue) > 2) {
+//                lastSpeedValue = lastSpeedValue > 0 ? 45 : - 45;
+//            } else {
+//                lastSpeedValue = -0.1 * velocity.x;
+//            }
+//            
+//            //            int steerVal = -0.1 * velocity.x;
+//            //            steerVal = steerVal < zeroSteerRange && steerVal > 0 ? 0 : steerVal > -zeroSteerRange && steerVal < 0 ? 0 : steerVal;
+//            //            steerVal = steerVal > 100 ? 100 : (steerVal < -100 ? -100 : steerVal);
+//            //
+//            //            [self sendToBotSteer:steerVal speed:0 weapon:0 magnet:0];
+//            
+//            
+//        }
+//            break;
+//        case UIGestureRecognizerStateEnded: {
+//            
+//            lastSpeedValue = 0;
+//            
+//            //            [self sendToBotSteer:0 speed:0 weapon:0 magnet:0];
+//            
+//            
+//            //            CGPoint velocity = [recognizer velocityInView:leftPanGestureView];
+//            //            CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+//            //            NSLog(@"Ended... left pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
+//            
+//            //            float slideFactor = 0.00005 * magnitude;
+//            //            CGPoint finalPoint = CGPointMake(sticker.center.x + (velocity.x * slideFactor),
+//            //                                             sticker.center.y + (velocity.y * slideFactor));
+//            //            finalPoint = [self clampToBoundary:finalPoint withSize:sticker.bounds.size];
+//            //
+//            //            CGFloat distance = [self distance:sticker.center to:finalPoint] / self.bounds.size.height;
+//            //            distance *= 0.5;
+//            //
+//            //            [self.delegate panelDrawUpdate:self duration:distance];
+//            //            [UIView animateWithDuration:distance delay:0
+//            //                                options:kAnimationOptions
+//            //                             animations:^
+//            //             {
+//            //             sticker.center = finalPoint;
+//            //             } completion:^(BOOL finished) {
+//            //                 [self.delegate panelDrawUpdate:self duration:0];
+//            //                 [self.delegate panelChanged:self];
+//            //             }];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//}
+
 #pragma mark - RfduinoDiscoveryDelegate Manager methods
 
 - (void)didDiscoverRFduino:(RFduino *)rfduino
@@ -556,6 +620,8 @@ int maxSpeedChange = 20;
     NSLog(@"didConnectRFduino");
     statusLabel.text = @"Minibot Active";
     
+    [self resetMotion];
+    
     [rfduinoManager stopScan];
 }
 
@@ -574,7 +640,15 @@ int maxSpeedChange = 20;
     
     statusLabel.text = @"Minibot Disconnected";
 
+    [self resetMotion];
+
     [rfduinoManager startScan];
+}
+
+- (void)resetMotion
+{
+    lastSteerValue = 0;
+    lastSpeedValue = 0;
 }
 
 @end
