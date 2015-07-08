@@ -460,9 +460,9 @@ int maxSpeedChange = 20;
             // NSLog(@"right pan velocity: %f, %f, %f", velocity.x, velocity.y, magnitude);
             
             if (fabs(velocity.x) < 100 && abs(lastSteerValue) > 2) {
-                lastSteerValue = lastSteerValue > 0 ? 65 : -65;
+                lastSteerValue = lastSteerValue > 0 ? 50 : -50;
             } else {
-                lastSteerValue = -0.15 * velocity.x;
+                lastSteerValue = -0.11 * velocity.x;
             }
         }
             break;
@@ -607,11 +607,14 @@ int maxSpeedChange = 20;
     NSLog(@"didDiscoverRFduino");
     bleConnectButton.hidden = NO;
     statusLabel.text = @"Minibot Found";
+    
+    // auto reconnect
+    [ self bleConnectAction:nil];
 }
 
 - (void)didUpdateDiscoveredRFduino:(RFduino *)rfduino
 {
-    NSLog(@"didUpdateRFduino");
+    //NSLog(@"didUpdateRFduino");
     
 }
 
